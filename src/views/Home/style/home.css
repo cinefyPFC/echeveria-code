@@ -1,0 +1,152 @@
+.estrutura {
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) 3fr 300px;
+  grid-template-areas:
+    "header header header"
+    "sidenav content anuncios"
+    "footer footer footer"
+  ;
+}
+
+@media (max-width: 1200px) {
+  .estrutura {
+    grid-template-areas:
+      "header header header"
+      "content content content"
+      "footer footer footer"
+    ;
+  }
+}
+
+@media (max-width: 760px) {
+  .estrutura {
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "header"
+      "content"
+      "footer"
+    ;
+  }
+}
+.content {
+  grid-area: content;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+}
+
+@media (max-width: 600px) {
+  .content {
+    grid-template-columns: auto;
+  }
+}
+
+.col-wide {
+  grid-column: 1 / -1;
+}
+
+.imagem-1 {
+  grid-row: span 2;
+  align-self: end;
+}
+
+.item-2 {
+  align-self: end;
+}
+
+/*ESTILOS CONTENT*/
+
+p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  color: var(--white);
+  text-align: justify;
+}
+
+.informacoes p + p{
+  margin-top: 30px;
+}
+
+/*TITULO*/
+
+.titulo {
+  color: #900C9C;
+}
+
+.titulo h1 {
+  font-size: 3.75em;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.titulo span {
+  font-size: 0.875em;
+  font-style: italic;
+}
+
+/*CARACTERISTICAS*/
+
+.caracteristicas {
+  display: flex;
+  align-items: flex-start;
+}
+
+
+.caracteristicas > div:first-child {
+  margin-right: 30px;
+}
+
+.caracteristicas span {
+  display: block;
+
+}
+
+.numero {
+  font-size: 3em;
+  line-height: 1;
+  margin: 10px auto;
+}
+
+.rotulo {
+  background: var(--white);
+  border-radius: 0 0 5px 5px;
+  padding: 5px 0;
+  position: relative;
+  top: 2px;
+}
+
+.destaque {
+  font-size: 0.875em;
+  max-width: 16em;
+}
+
+.citacao, .atributos {
+  align-self: start;
+  padding: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #D0183E, #53121A);
+}
+
+.citacao p {
+  font-size: 1.5em;
+  font-style: italic;
+  text-align: center;
+  color: var(--white);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.atributos li {
+  color: var(--white);
+  font-family: Courier, monospace;
+  font-size: 1.125em;
+  padding: 15px;
+}
+
+.atributos li + li {
+  border-top: 2px solid #e8175b;
+}

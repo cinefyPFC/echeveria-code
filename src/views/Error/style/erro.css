@@ -1,0 +1,7 @@
+h1,span{
+  color:white
+}
+li a:hover{
+  color: white;
+  cursor: pointer;
+}

@@ -1,0 +1,14 @@
+.footer {
+  grid-area: footer;
+  background: linear-gradient(135deg,#D0183E, #53121A);
+  position: absolute;
+  width: 100%;
+}
+
+.footer p {
+  color: white;
+  text-align: center;
+  padding: 2px 0px;
+  padding-top: 11px;
+  font-size: 0.9em;
+}

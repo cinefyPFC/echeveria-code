@@ -1,0 +1,30 @@
+.navbar-usuario{
+  background-color: var(--dark);
+  width: 100%;
+}
+.navbar-usuario ul {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  gap: 35px;
+}
+.img-logout {
+  width: 50px;
+  border-radius: 30px;
+}
+.dropdown-toggle::after{
+  display: none;
+}
+.dropdown-menu-right {
+  right: 0px;
+  left: auto;
+  top: 71px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  background-color: var(--dark);
+  padding: 14px 4px 4px 14px;
+  right: -16px;
+}
+.dropdown-menu.show {
+  display: grid;
+}
