@@ -21,16 +21,19 @@ function Cadastro() {
             <input
               type="text"
               name="apelido"
+              pattern="[^\0]"
               required=""
               value={apelido}
               onChange={(e) => setApelido(e.target.value)}
             />
+
             <label>Apelido</label>
           </div>
           <div className="user-box">
             {/* <input type="email" name="" required="" /> */}
             <input
-              type="email"
+              type="text"
+              pattern="/^[^\s@]+@[^\s@]+$/"
               name=""
               required=""
               value={email}
@@ -43,7 +46,8 @@ function Cadastro() {
             {/* <input type="password" name="" required="" /> */}
             <input
               type="password"
-              name=""
+              pattern="[^\0]"
+              name="password"
               required=""
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
@@ -83,9 +87,9 @@ function Cadastro() {
       .catch(function (error) {
         console.log(error);
       });
-    setApelido('batata');
-    setEmail('batatinha');
-    setSenha('batatão');
+    setApelido('');
+    setEmail('');
+    setSenha('');
   }
 }
 
