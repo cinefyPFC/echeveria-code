@@ -62,7 +62,8 @@ function Login() {
         senha: senha,
       })
       .then(function (response) {
-        console.log(response);
+        // if response = 200, então salva o token no sessionStorage, manda um tostezada de sucesso e redireciona. Na pg de perfil
+        console.log(response); // receber fazendo o showUsuario para mostrar o perfil do usuario que acabou de logar passando o token
         // Redirect('/perfil');
       })
       .catch(function (error) {

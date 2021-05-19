@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
+// import ImageUploader from 'react-images-upload';
 import './style/cadastro.css';
-
-//verficar a questão da foto do usuário pelo backend se não der para o usuário colocar
-//foto antes de criar o perfil
 
 function Cadastro() {
   const [apelido, setApelido] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  // const [foto, setFoto] = useState('');
+
+  // const onDrop = (foto) => {
+  //   setFoto([...foto]);
+  // };
 
   return (
     <div className="body">
@@ -55,6 +58,14 @@ function Cadastro() {
 
             <label>Senha</label>
           </div>
+          {/* <div className="user-box">
+            <ImageUploader
+              withIcon={true}
+              onChange={onDrop}
+              imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg']}
+              maxFileSize={5242880}
+            />
+          </div> */}
           <Link to="/login">
             <span></span>
             <span></span>
