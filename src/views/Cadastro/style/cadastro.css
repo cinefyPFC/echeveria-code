@@ -3,6 +3,7 @@
   top: 50%;
   left: 50%;
   width: 400px;
+  height: 480px;
   padding: 40px;
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, .5);
@@ -169,4 +170,18 @@ input:valid+label {
 
 .btnCadastrar {
   margin-left: 10px;
+}
+
+.esqueci-senha {
+  font-size: 11px !important;
+  align-items: center;
+  text-align: center;
+  margin-top: 25px !important;
+}
+
+.esqueci-senha a:hover {
+  background: white !important;
+  color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 0 5px var(--box-shadow-btn), 0 0 25px var(--box-shadow-btn), 0 0 50px var(--box-shadow-btn), 0 0 100px var(--box-shadow-btn);
 }
