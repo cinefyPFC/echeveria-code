@@ -119,13 +119,9 @@ function Cadastro() {
         senha: senha,
       })
       .then(function (response) {
-        notificarSucesso();
+        notificarSucesso(response);
       })
       .catch(function (error) {
-        console.log('erro response data', error.response.data);
-        console.log('erro response status', error.response.status);
-        console.log('erro response headers', error.response.headers);
-
         notificarFalha(error);
       });
     setApelido('');
