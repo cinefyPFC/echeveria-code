@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 // import ImageUploader from 'react-images-upload';
 import './style/cadastro.css';
 
@@ -13,6 +15,29 @@ function Cadastro() {
   // const onDrop = (foto) => {
   //   setFoto([...foto]);
   // };
+  const notificarSucesso = (response) => {
+    toast.success('Usuario ' + response.apelido + ' cadastrado com sucesso!', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  const notificarFalha = (error) => {
+    toast.error(`${error.response.data.erro} dos dados`, {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   return (
     <div className="body">
@@ -82,6 +107,7 @@ function Cadastro() {
           </Link>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 
@@ -93,10 +119,14 @@ function Cadastro() {
         senha: senha,
       })
       .then(function (response) {
-        console.log(response);
+        notificarSucesso();
       })
       .catch(function (error) {
-        console.log(error);
+        console.log('erro response data', error.response.data);
+        console.log('erro response status', error.response.status);
+        console.log('erro response headers', error.response.headers);
+
+        notificarFalha(error);
       });
     setApelido('');
     setEmail('');
