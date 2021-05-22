@@ -20,6 +20,7 @@ function Cadastro() {
       'Usuario ' + response.data.apelido + ' cadastrado com sucesso!',
       {
         position: 'top-right',
+        onClose: () => completarLogin(response.data),
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -29,7 +30,10 @@ function Cadastro() {
       },
     );
   };
-
+  const completarLogin = (response) => {
+    sessionStorage.setItem('token', response.token);
+    history.push('/perfil');
+  };
   const notificarFalha = (error) => {
     toast.error(`${error.response.data.erro}`, {
       position: 'top-right',
@@ -123,7 +127,6 @@ function Cadastro() {
       })
       .then(function (response) {
         notificarSucessoCadastro(response);
-        <Redirect to="/login" />;
       })
       .catch(function (error) {
         console.log('Opa aconteceu esse erro aqui!', error.toJSON());
