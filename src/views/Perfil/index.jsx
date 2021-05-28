@@ -1,10 +1,31 @@
-import React from 'react';
+import React, { Component, useEffect } from 'react';
 import './style/perfil.css';
-import { Link } from 'react-router-dom';
+import api from '../../services/api';
+import { useHistory } from 'react-router-dom';
 import { Col, Row, Button } from 'reactstrap';
 import NavbarUser from '../../components/Sidenavbar/navbarUser';
 
 function Profile() {
+  useEffect(() => {
+    let token = sessionStorage.getItem('token');
+    async function getUsers(token) {
+      await api
+        .get('users', {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(function (response) {
+          console.log('Boa!', response.data);
+        })
+        .catch(function (error) {
+          console.log('Opa aconteceu esse erro aqui!', error);
+        });
+    }
+
+    getUsers();
+  });
   return (
     <>
       <NavbarUser />

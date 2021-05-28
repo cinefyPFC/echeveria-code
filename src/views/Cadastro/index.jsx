@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 // import ImageUploader from 'react-images-upload';
 import './style/cadastro.css';
 
 function Cadastro() {
+  let history = useHistory();
   const [apelido, setApelido] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
