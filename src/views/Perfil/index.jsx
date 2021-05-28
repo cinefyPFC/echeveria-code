@@ -7,10 +7,10 @@ import NavbarUser from '../../components/Sidenavbar/navbarUser';
 
 function Profile() {
   useEffect(() => {
-    let token = sessionStorage.getItem('token');
-    async function getUsers(token) {
+    async function getUsers() {
+      let token = sessionStorage.getItem('token');
       await api
-        .get('users', {
+        .get('users/show', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
