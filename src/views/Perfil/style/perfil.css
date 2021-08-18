@@ -1,26 +1,28 @@
-
 .padding {
   padding: 3rem !important;
   padding-bottom: 0px !important;
 }
 
 .user-card-full {
-  overflow: hidden
+  overflow: hidden;
 }
 
 .card {
   border-radius: 5px;
   border: none;
-  margin-bottom: 30px
+  margin-bottom: 30px;
 }
 
-
+a.btnAdmin {
+  width: 100%;
+  text-align: center;
+}
 .user-card-full .user-profile {
-  border-radius: 5px 0 0 5px
+  border-radius: 5px 0 0 5px;
 }
 
 .bg-uf {
-  background: linear-gradient(to right, var(--subcor-logo), var(--cor-logo))
+  background: linear-gradient(to right, var(--subcor-logo), var(--cor-logo));
 }
 .btn-outline-warning:hover {
   color: white;
@@ -34,42 +36,42 @@
 
 @media only screen and (min-width: 1400px) {
   p {
-      font-size: 14px
+    font-size: 14px;
   }
 }
 
 .card-block {
-  padding: 1.25rem
+  padding: 1.25rem;
 }
 
 .card .card-block p {
-  line-height: 25px
+  line-height: 25px;
 }
 
 .text-muted {
-  color: var(--subtexto) !important
+  color: var(--subtexto) !important;
 }
 
 .user-card-full .social-link li {
-  display: inline-block
+  display: inline-block;
 }
 
 .user-card-full .social-link li a {
   font-size: 20px;
   margin: 0 10px 0 0;
   -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out
+  transition: all 0.3s ease-in-out;
 }
 div#page-content {
   width: 100%;
 }
-.conteudo-usuario{
+.conteudo-usuario {
   background-color: black;
 }
-.page-profile-user{
-overflow: hidden;
+.page-profile-user {
+  overflow: hidden;
 }
-.info-user-nome{
+.info-user-nome {
   margin-top: 15px;
 }
 .img-radius {
@@ -80,8 +82,7 @@ overflow: hidden;
 button.btn.btn-outline-danger {
   margin-left: 60%;
 }
-@media(max-width:700px){
-
+@media (max-width: 700px) {
   .padding {
     padding: 1rem !important;
     padding-bottom: 0px !important;

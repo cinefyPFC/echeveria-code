@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Cadastro from '../views/Cadastro';
 import Admin from '../views/Dashboard';
+import Dashboard from '../views/Dashboard/Profile';
 import Erro from '../views/Error';
 import Home from '../views/Home';
 import Login from '../views/Login';
@@ -16,6 +17,7 @@ const Router = () => {
         <Route exact path="/cadastro" component={Cadastro} />
         <Route exact path="/admin" component={Admin} />
         <Route exact path="/perfil" component={Profile} />
+        <Route exact path="/dashboard" component={Dashboard} />
         <Route path="*" component={Erro} />
       </Switch>
     </BrowserRouter>
