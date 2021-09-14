@@ -11,11 +11,11 @@ export default function HeaderAdmin() {
         <FiHome color="#FFF" size={24} />
         Inicio
       </Link>
-      <Link to="/customers">
+      <Link to="/dashboard/usuarios">
         <FiUser color="#FFF" size={24} />
         Usuário
       </Link>
-      <Link to="/profile">
+      <Link to="#">
         <FiSettings color="#FFF" size={24} />
         Configurações
       </Link>
