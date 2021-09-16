@@ -2,36 +2,29 @@
 :root{
   --box-shadow-btn:#D0183E;
   --white: #fff;
-  --background-color:#090C10;
+  --background-color:#0e151f;
   --dark: #343a40;
   --font-family: 'Montserrat', sans-serif;
   --cor-logo: #D0183E;
   --subcor-logo:#53121A;
   --subtexto: #919aa3;
-
-
 }
 * {
   margin: 0;
   padding: 0;
-}
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-img {
-  display: block;
-  width: 100%;
-  border-radius: 5px;
 }
 body{
   background-color:  var(--background-color);
   font-family:var(--font-family);
 }
 h1,h2,h3,h4,h5,h6, span, p, input, label {
-  color: white;
+  color: var(--white);
 }
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+
+

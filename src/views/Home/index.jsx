@@ -1,67 +1,84 @@
 import React, { Component } from 'react';
 import './style/home.css';
-import imgFilme from './img/img1.jpg';
-import Header from '../../components/Header';
+import Menu from '../../components/Menu';
 import Footer from '../../components/Footer';
+import { Container, Row, Col } from 'reactstrap';
+import {Link} from 'react-router-dom'
+import ScrollArrow from '../../components/scroll';
 
 function Home() {
   return (
     <>
-      <Header />
-      <div className="estrutura">
-        <main className="content">
-          <div className="titulo">
-            <h1>Cinefy</h1>
-            <span>sua plataforma de trailers</span>
-          </div>
-          <img className="imagem-1" src={imgFilme} alt="IMG SERIE" />
-          <img className="imagem-2" src={imgFilme} alt="IMG FILME" />
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book
-          </p>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book
-          </p>
-          <blockquote className="citacao col-wide">
-            <p>
-              “Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industrys”
-            </p>
-          </blockquote>
-          <ul className="atributos">
-            <li>Membros: 12.000</li>
-            <li>Tipo: Trailers</li>
-            <li>Projeto: 1 anos</li>
-            <li>+ de 1000 Filmes</li>
-            <li>+ de 1000 Documentário</li>
-            <li>+ de 1000 Séries </li>
-            <li>+ de 1000 Séries </li>
-            <li>+ de 1000 Séries </li>
-          </ul>
+      <Menu id="topo"/>
+        <Container fluid={true} >
+          <header className="masthead">
+            <div className="container h-100">
+              <div className="row h-100 align-items-center">
+                <div className="col-12 text-center">
+                  <h1 className="fw-light">Vertically Centered Masthead Content</h1>
+                  <p className="lead">A great starter layout for a landing page</p>
+                </div>
+              </div>
+            </div>
+          </header>
+          </Container>
+          <Container>
+            <Row>
+              <Col>
+                <div className="main-content top3-content">
+                  <h2>news coverage and some
+                    surprises</h2>
+                  <p>The release of Apple Silicon-based Macs at the end of last year generated a flurry of news coverage and some
+                    surprises at the machine’s performance. This post details some background information on the experience of
+                    porting Firefox to run natively on these CPUs.</p>
+                  <p>We’ll start with some background on the Mac transition and give an overview of Firefox internals that needed to
+                    know about the new architecture, before moving on to the concept of Universal Binaries.</p>
+                  <p>We’ll then explain how DRM/EME works on the new platform, talk about our experience with macOS Big Sur, and
+                    discuss various updater problems we had to deal with. We’ll conclude with the release and an overview of various
+                    other improvements that are in the pipeline.</p>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+          <Container fluid={true}>
+            <section id="grid-one" className="grid-one main-bg section">
+              <div className="main-content grid-one-content">
+                <h2 className="grid-main-heading">My Grid</h2>
+                <p className="grid-description">Uma breve descrição.</p>
+                <Container>
+                  <Row >
+                    <Col sm="12" md="4" xs="4">
+                        <article>
+                          <h3>Teste 1</h3>
+                          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis cum delectus molestias. Atque doloribus
+                            nobis laudantium esse ut, non commodi maxime distinctio veritatis unde, reprehenderit minus ad dolores
+                            provident maiores.</p>
+                        </article>
+                      </Col>
+                      <Col sm="12" md="4" xs="4">
+                        <article>
+                          <h3>Teste 2</h3>
+                          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis cum delectus molestias. Atque doloribus
+                            nobis laudantium esse ut, non commodi maxime distinctio veritatis unde, reprehenderit minus ad dolores
+                            provident maiores.</p>
+                        </article>
+                      </Col>
+                      <Col sm="12" md="4" xs="4">
+                        <article>
+                          <h3>Teste 3</h3>
+                          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis cum delectus molestias. Atque doloribus
+                            nobis laudantium esse ut, non commodi maxime distinctio veritatis unde, reprehenderit minus ad dolores
+                            provident maiores.</p>
+                        </article>
+                      </Col>
+                  </Row>
+                  </Container>
+              </div>
+            </section>
+          </Container>
 
-          <div className="informacoes">
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industrys standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book
-            </p>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industrys standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book
-            </p>
-          </div>
-        </main>
-      </div>
       <Footer />
+      <ScrollArrow />
     </>
   );
 }
