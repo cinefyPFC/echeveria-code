@@ -43,7 +43,7 @@
   transition: ease-in-out 0.4s;
 }
 .AdminConteudo {
-  margin-left: 220px;
+  margin-left: 200px;
   padding: 20px;
 }
 .sidebar a svg {
@@ -65,21 +65,32 @@
     width: 100%;
     height: auto;
     position: relative;
-  }
 
+
+
+  }
+  @media(max-width:700px){
+    .AdminConteudo {
+        margin-left: 0px;
+        padding: 20px;
+      }
+    }
   div.content {
     margin-left: 0;
   }
 
   .sidebar a {
     float: left;
+
   }
   .sidebar div {
     display: none;
+
   }
 
   .sidebar a svg {
     display: none;
+
   }
 }
 
@@ -87,9 +98,12 @@
   .sidebar a {
     text-align: center;
     float: none;
+
   }
 
   .sidebar a svg {
     display: none;
+
+
   }
 }
