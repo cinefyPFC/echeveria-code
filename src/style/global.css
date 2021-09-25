@@ -26,5 +26,22 @@ a {
 li {
   list-style: none;
 }
-
-
+.movie-card {
+  width: 230px;
+  height: 470px;
+  display: inline-flex !important;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: solid 1px;
+  margin: 0 0 0 46px;
+  border-radius: 5px;
+  background-color: #222;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 1px 2px 3px #222;
+  box-shadow: 1px 2px 3px #222;
+  position: relative;
+  -webkit-transition: cubic-bezier(.34,2,.6,1) 0.2s;
+  -o-transition: cubic-bezier(.34,2,.6,1) 0.2s;
+  transition: cubic-bezier(.34,2,.6,1) 0.2s;
+}

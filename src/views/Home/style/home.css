@@ -58,3 +58,16 @@
 .back-to-top:hover {
   color: red;
 }
+
+@media(max-width:600px){
+  .img-logo {
+    max-width: 34% !important;
+  }
+  .navbar-brand, ul.ml-auto.navbar-nav {
+    display: contents;
+  }
+  .nav-link{
+    font-size: 20px !important;
+  }
+
+}

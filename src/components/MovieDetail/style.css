@@ -119,9 +119,6 @@ div.movie{
     text-decoration: underline;
 }
 
-.movie-footer > div{
-
-}
 
 @media (max-width: 767px){
     .movie{

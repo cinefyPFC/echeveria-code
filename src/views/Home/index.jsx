@@ -46,7 +46,7 @@ function Home() {
                 <p className="grid-description">Uma breve descrição.</p>
                 <Container>
                   <Row >
-                    <Col sm="12" md="4" xs="4">
+                    <Col  md="4" sm="12">
                         <article>
                           <h3>Teste 1</h3>
                           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis cum delectus molestias. Atque doloribus
@@ -54,7 +54,7 @@ function Home() {
                             provident maiores.</p>
                         </article>
                       </Col>
-                      <Col sm="12" md="4" xs="4">
+                      <Col  md="4" sm="12">
                         <article>
                           <h3>Teste 2</h3>
                           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis cum delectus molestias. Atque doloribus
@@ -62,7 +62,7 @@ function Home() {
                             provident maiores.</p>
                         </article>
                       </Col>
-                      <Col sm="12" md="4" xs="4">
+                      <Col  md="4" sm="12">
                         <article>
                           <h3>Teste 3</h3>
                           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis cum delectus molestias. Atque doloribus
