@@ -2,8 +2,8 @@ import React from 'react';
 import HeaderAdmin from '../../components/HeaderAdmin';
 import { Button, Table } from 'reactstrap';
 import './style/gerenciamento.css';
-import { FcEmptyTrash,FcAbout } from "react-icons/fc";
-import { UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
+import { FiUserX, FiEdit} from "react-icons/fi";
+
 
 
 function Usuario() {
@@ -28,16 +28,7 @@ function Usuario() {
               <td className="table-gerenciamento-usuario">Guilherme</td>
               <td className="table-gerenciamento-usuario">guilherme@alunos.umc.br</td>
               <td className="table-gerenciamento-usuario">
-              <UncontrolledButtonDropdown>
-                <DropdownToggle caret>
-                   ...
-                </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem> <FcEmptyTrash></FcEmptyTrash>  Excluir</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem><FcAbout></FcAbout> Editar</DropdownItem>
-                </DropdownMenu>
-            </UncontrolledButtonDropdown>
+              <FiEdit size='25'></FiEdit> &nbsp;&nbsp;  <FiUserX size='25'></FiUserX>
                 </td>
             </tr>
             <tr>
@@ -45,17 +36,7 @@ function Usuario() {
               <td className="table-gerenciamento-usuario">Kelvin</td>
               <td className="table-gerenciamento-usuario">kelv@umc.br</td>
               <td className="table-gerenciamento-usuario">
-
-              <UncontrolledButtonDropdown>
-                <DropdownToggle caret>
-                   ...
-                </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem> <FcEmptyTrash></FcEmptyTrash>  Excluir</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem><FcAbout></FcAbout> Editar</DropdownItem>
-                </DropdownMenu>
-            </UncontrolledButtonDropdown>
+              <FiEdit size='25'></FiEdit> &nbsp;&nbsp;  <FiUserX size='25'></FiUserX>
                 </td>
             </tr>
             <tr>
@@ -63,18 +44,7 @@ function Usuario() {
               <td className="table-gerenciamento-usuario">Micael</td>
               <td className="table-gerenciamento-usuario">micael@umc.br</td>
               <td className="table-gerenciamento-usuario">
-
-              <UncontrolledButtonDropdown>
-                <DropdownToggle caret>
-                   ...
-                </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem> <FcEmptyTrash></FcEmptyTrash>  Excluir</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem><FcAbout></FcAbout> Editar</DropdownItem>
-                </DropdownMenu>
-            </UncontrolledButtonDropdown>
-
+                <FiEdit size='25'></FiEdit> &nbsp;&nbsp;  <FiUserX size='25'></FiUserX>
               </td>
             </tr>
           </tbody>
