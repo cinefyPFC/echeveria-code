@@ -20,7 +20,7 @@ const Router = () => {
         <Route exact path="/perfil" component={Profile} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/dashboard/usuarios" component={Usuario} />
-        <Route path="*" component={Erro} />
+
       </Switch>
     </BrowserRouter>
   );
