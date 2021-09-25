@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import './style/perfil.css';
 import api from '../../services/api';
 import { useHistory } from 'react-router-dom';
@@ -6,6 +6,8 @@ import { Col, Row, Button } from 'reactstrap';
 import NavbarUser from '../../components/Sidenavbar/navbarUser';
 
 function Profile() {
+  const [usuario, setUsuario] = useState([]);
+  const [avatar, setAvatar] = useState([]);
   useEffect(() => {
     async function getUsers() {
       let token = sessionStorage.getItem('token');
@@ -18,14 +20,17 @@ function Profile() {
         })
         .then(function (response) {
           console.log('Boa!', response.data);
+          setUsuario(response.data);
+          setAvatar(response.data.avatar.url);
+          console.log('Usuario!', usuario);
         })
         .catch(function (error) {
           console.log('Opa aconteceu esse erro aqui!', error);
         });
     }
-
     getUsers();
-  });
+
+  }, []);
   return (
     <>
       <NavbarUser />
@@ -42,7 +47,7 @@ function Profile() {
                   <Col sm={4} className="bg-uf user-profile">
                     <div className="card-block text-center text-white">
                       <img
-                        src="https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png"
+                        src={avatar}
                         alt="Imagem usuario"
                         className="img-radius"
                       />
@@ -57,19 +62,20 @@ function Profile() {
                         <Col sm={6}>
                           <p className="info-user">Apelido</p>
                           <h6 className="text-muted info-database">
-                            TheCinefy
+                            {usuario.apelido}
+
                           </h6>
                         </Col>
                         <Col sm={6}>
                           <p className="info-user">Email</p>
                           <h6 className="text-muted info-database">
-                            cinefy@cinefy.com
+                            {usuario.email}
                           </h6>
                         </Col>
                         <Col sm={6}>
                           <p className="info-user">Data de Nascimento</p>
                           <h6 className="text-muted info-database">
-                            14/04/2021
+                            {usuario.dtNascimento}
                           </h6>
                         </Col>
                         <Col sm={6}>
