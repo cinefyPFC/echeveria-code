@@ -8,10 +8,7 @@ import {
 } from 'reactstrap';
 import './navbarUser.css';
 
-const NavbarUser = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
+const NavbarUser = () => {
 
   return (
     <div>

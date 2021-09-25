@@ -27,7 +27,7 @@ function Profile() {
     getUsers();
   });
   return (
-    <>
+    <div>
       <NavbarUser />
 
       <div
@@ -118,7 +118,7 @@ function Profile() {
           </Row>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

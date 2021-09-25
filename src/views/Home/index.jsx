@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './style/home.css';
 import Menu from '../../components/Menu';
 import Footer from '../../components/Footer';
 import { Container, Row, Col } from 'reactstrap';
-import {Link} from 'react-router-dom'
 import ScrollArrow from '../../components/scroll';
 
 function Home() {
   return (
-    <>
+    <div>
       <Menu id="topo"/>
         <Container fluid={true} >
           <header className="masthead">
@@ -79,7 +78,7 @@ function Home() {
 
       <Footer />
       <ScrollArrow />
-    </>
+    </div>
   );
 }
 export default Home;
