@@ -57,7 +57,7 @@ function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label>Usuário</label>
+            <label>Usuário/E-mail</label>
           </div>
           <div className="user-box">
             <input

@@ -45,3 +45,9 @@ li {
   -o-transition: cubic-bezier(.34,2,.6,1) 0.2s;
   transition: cubic-bezier(.34,2,.6,1) 0.2s;
 }
+.movie-body .movie-title {
+  height: 80px !important;
+}
+.cast-person .person-body {
+  height: 65px !important;
+}
