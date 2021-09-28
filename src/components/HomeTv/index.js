@@ -6,7 +6,7 @@ function Home() {
 	const [genres, setGenres] = useState();
 
 	useEffect(() => {
-		document.title = "Séries | React Movies"
+		document.title = "Séries | Cinefy"
 		API.genres().then(r => {
 			setGenres(r.data.genres);
 		})

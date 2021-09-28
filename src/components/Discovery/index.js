@@ -18,7 +18,7 @@ function Discovery() {
 
 
 	useEffect( () => {
-		document.title = "Discovery | React Movies"
+		document.title = "Discovery | Cinefy"
 		const y = new Date().getFullYear();
 		const arr = [];
 		for(let i = 1874; i <= y; i++){

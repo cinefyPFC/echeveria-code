@@ -1,5 +1,5 @@
 header{
-    background-color: #1ec7c7;
+    background-color: #D0183E;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -50,7 +50,7 @@ header > .down-header > .navbar > ul > li > a{
 }
 
 header > .down-header > .navbar > ul > li > a:hover{
-    background-color: #199999;
+    background-color: #D0183E;
 }
 
 header > .down-header > .search{

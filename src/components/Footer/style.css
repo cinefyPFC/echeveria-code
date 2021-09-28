@@ -16,7 +16,7 @@ footer > span > span{
 }
 
 footer > span > a{
-    color: lightblue;
+    color: #fff;
     text-decoration: none;
     cursor: pointer;
     opacity: 0.7;

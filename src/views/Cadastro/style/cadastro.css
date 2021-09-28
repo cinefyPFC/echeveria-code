@@ -3,12 +3,16 @@
   top: 50%;
   left: 50%;
   width: 400px;
-  height: 480px;
+  height: 700px;
   padding: 40px;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, .5);
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+  -webkit-box-shadow: 0 15px 25px rgb(0 0 0 / 60%);
+  box-shadow: 0 15px 25px rgb(0 0 0 / 60%);
   border-radius: 10px;
 }
 

@@ -11,6 +11,9 @@ function Cadastro() {
   const [apelido, setApelido] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [personagem, setPersonagem] = useState('');
+  const [emailSecundario, setEmailSecundario] = useState('');
+  const [dtNascimento, setDtnascimento] = useState('');
   // const [foto, setFoto] = useState('');
 
   // const onDrop = (foto) => {
@@ -66,6 +69,19 @@ function Cadastro() {
             <label>Apelido</label>
           </div>
           <div className="user-box">
+            {/* <input type="text" name="apelido" required="" /> */}
+            <input
+              type="text"
+              name="apelido"
+              pattern="[^\0]"
+              required=""
+              value={personagem}
+              onChange={(e) => setPersonagem(e.target.value)}
+            />
+
+            <label>Personagem Favorito</label>
+          </div>
+          <div className="user-box">
             {/* <input type="email" name="" required="" /> */}
             <input
               type="text"
@@ -79,6 +95,20 @@ function Cadastro() {
             <label>Email</label>
           </div>
           <div className="user-box">
+            {/* <input type="email" name="" required="" /> */}
+            <input
+              type="text"
+              pattern="/^[^\s@]+@[^\s@]+$/"
+              name=""
+              required=""
+              value={emailSecundario}
+              onChange={(e) => setEmailSecundario(e.target.value)}
+            />
+
+            <label>Email Secundário</label>
+          </div>
+
+          <div className="user-box">
             {/* <input type="password" name="" required="" /> */}
             <input
               type="password"
@@ -90,6 +120,19 @@ function Cadastro() {
             />
 
             <label>Senha</label>
+          </div>
+          <div className="user-box">
+            {/* <input type="email" name="" required="" /> */}
+            <input
+              type="text"
+              pattern="/^[^\s@]+@[^\s@]+$/"
+              name=""
+              required=""
+              value={dtNascimento}
+              onChange={(e) => setDtnascimento(e.target.value)}
+            />
+
+            <label>Data de Nascimento</label>
           </div>
           {/* <div className="user-box">
             <ImageUploader

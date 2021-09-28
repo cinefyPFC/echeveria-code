@@ -40,7 +40,7 @@ function Section(props) {
 
 	function renderMovies(movies){
 		let aux = [];
-		if(!showAll) aux = movies.slice(0, 5);
+		if(!showAll) aux = movies.slice(0, 12);
 		else aux = movies;
 		return aux.map(movie => {
 			return (

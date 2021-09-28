@@ -15,7 +15,7 @@ function Routes() {
 		<Router>
 			<Suspense fallback={<span>Loading...</span>}>
 				<Switch>
-					<Route exact path="/logado">
+					<Route exact path="/filmes">
 						<Container>
 							<Home />
 						</Container>

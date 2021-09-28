@@ -64,12 +64,12 @@ div.movie{
 }
 
 .movie-genres > span{
-    border: solid 1px #199999;
+    border: solid 1px #D0183E;
     padding: 8px 20px;
     display: inline-block;
     margin-right: 10px;
     border-radius: 4px;
-    background-color: #199999;
+    background-color: #D0183E;
     font-size: 14px;
     margin-top:10px;
 }
@@ -91,7 +91,7 @@ div.movie{
     margin-left: 20px;
 }
 .movie-director > a{
-    color: #ccc;
+    color: #fff;
     text-decoration: none;
     margin-right: 10px;
 
@@ -108,7 +108,7 @@ div.movie{
 }
 
 .movie-actors > a, .movie-companies > a{
-    color: #ccc;
+    color: #fff;
     text-decoration: none;
     margin-right: 10px;
 }

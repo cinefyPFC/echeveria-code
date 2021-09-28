@@ -148,7 +148,7 @@ function Header() {
 
 				<div className="navbar">
 					<ul>
-						<li><Link to="/">Filmes</Link></li>
+						<li><Link to="/filmes">Filmes</Link></li>
 						<li><Link to="/tv">Séries</Link></li>
 						<li><Link to="/discovery">Descubra novos filmes</Link></li>
 					</ul>

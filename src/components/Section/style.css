@@ -19,7 +19,7 @@ main > section > section{
     position: relative;
     top: 8px;
     font-size: 14px;
-    color: #333;
+    color: #fff;
     padding-right: 10px;
 }
 
@@ -31,7 +31,7 @@ main > section > div > h3{
     border-radius: 4px;
     box-shadow: 1px 1px 2px #333;
     color: #fff;
-    background-color: #1ec7c7;
+    background-color: #D0183E;
 }
 
 .movie-card{

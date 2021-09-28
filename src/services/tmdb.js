@@ -29,7 +29,7 @@ const API = {
 			}
 		},
 
-		topRated: async (page=1) => {
+		topRated: async (page=4) => {
 			try{
 				return await axios.get(`${API_MOVIE_URL}/top_rated/?api_key=${API_AUTH_KEY}&language=${API_LANG}&page=${page}`);
 			}
