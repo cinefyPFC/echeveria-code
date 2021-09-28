@@ -6,6 +6,7 @@ import api from '../../services/api';
 // import ImageUploader from 'react-images-upload';
 import './style/cadastro.css';
 
+
 function Cadastro() {
   let history = useHistory();
   const [apelido, setApelido] = useState('');
@@ -124,16 +125,18 @@ function Cadastro() {
           <div className="user-box">
             {/* <input type="email" name="" required="" /> */}
             <input
-              type="text"
-              pattern="/^[^\s@]+@[^\s@]+$/"
+              type="date"
               name=""
-              required=""
+              date-format="DD MM YYYY"
+              max="1979-12-31"
+              maxLength="1"
               value={dtNascimento}
               onChange={(e) => setDtnascimento(e.target.value)}
             />
 
             <label>Data de Nascimento</label>
           </div>
+
           {/* <div className="user-box">
             <ImageUploader
               withIcon={true}
