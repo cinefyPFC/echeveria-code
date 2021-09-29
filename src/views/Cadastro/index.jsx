@@ -122,14 +122,16 @@ function Cadastro() {
 
             <label>Senha</label>
           </div>
+
           <div className="user-box">
             {/* <input type="email" name="" required="" /> */}
             <input
-              type="date"
+              type="Date"
               name=""
-              date-format="DD MM YYYY"
-              max="1979-12-31"
-              maxLength="1"
+              date-format="MM DD YYYY"
+              max="2100-12-31"
+              maxLength="8"
+              onBlur="(this.type='text')"
               value={dtNascimento}
               onChange={(e) => setDtnascimento(e.target.value)}
             />
