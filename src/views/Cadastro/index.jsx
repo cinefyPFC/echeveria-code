@@ -163,22 +163,35 @@ function Cadastro() {
 
   async function novoUsuario() {
     await api
-      .post('users', {
-        apelido: apelido,
-        email: email,
-        senha: senha,
-        personagemFav: personagem,
-        emailSecundario: emailSecundario,
-        dtNascimento: dtNascimento,
-        avatar:avatar
-      })
-      .then(function (response) {
-        notificarSucessoCadastro(response);
-      })
-      .catch(function (error) {
-        console.log('Opa aconteceu esse erro aqui!', error.toJSON());
-        notificarFalha(error);
-      });
+    .post('files', {Headers:{"Content-Type": `multipart/form-data;boundary=${avatar}`, },
+      avatar:avatar
+    })
+    .then(function (response) {
+      notificarSucessoCadastro(response);
+    })
+    .catch(function (error) {
+      console.log('Opa aconteceu esse erro aqui!', error.toJSON());
+      notificarFalha(error);
+    });
+    await api
+    .post('users', {
+      apelido: apelido,
+      email: email,
+      senha: senha,
+      personagemFav: personagem,
+      emailSecundario: emailSecundario,
+      dtNascimento: dtNascimento,
+
+    })
+    .then(function (response) {
+      notificarSucessoCadastro(response);
+    })
+    .catch(function (error) {
+      console.log('Opa aconteceu esse erro aqui!', error.toJSON());
+      notificarFalha(error);
+    });
+
+
   }
 }
 
