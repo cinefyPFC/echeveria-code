@@ -1,6 +1,6 @@
 import React from 'react';
 import HeaderAdmin from '../../components/HeaderAdmin';
-import { Button, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 import './style/gerenciamento.css';
 import { FiUserX, FiEdit} from "react-icons/fi";
 

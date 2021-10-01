@@ -1,6 +1,5 @@
 import React from 'react';
 import HeaderAdmin from '../../../components/HeaderAdmin';
-import { Col } from 'reactstrap';
 
 function Dashboard() {
   return (

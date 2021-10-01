@@ -1,7 +1,6 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import './style/perfil.css';
 import api from '../../services/api';
-import { useHistory } from 'react-router-dom';
 import { Col, Row, Button } from 'reactstrap';
 import NavbarUser from '../../components/Sidenavbar/navbarUser';
 
@@ -52,7 +51,7 @@ function Profile() {
                         className="img-radius"
                       />
                       <h6 className="info-user-nome">Cinefy React</h6>
-                      <p className="text-center personagem-favorito">Yoda</p>
+                      <p className="text-center personagem-favorito">{usuario.apelido}</p>
                     </div>
                   </Col>
                   <Col sm={8} className="conteudo-usuario">

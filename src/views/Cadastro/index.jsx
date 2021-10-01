@@ -15,11 +15,8 @@ function Cadastro() {
   const [personagem, setPersonagem] = useState('');
   const [emailSecundario, setEmailSecundario] = useState('');
   const [dtNascimento, setDtnascimento] = useState('');
-  // const [foto, setFoto] = useState('');
+  const [avatar, setAvatar] = useState('');
 
-  // const onDrop = (foto) => {
-  //   setFoto([...foto]);
-  // };
   const notificarSucessoCadastro = (response) => {
     toast.success(
       'Usuario ' + response.data.apelido + ' cadastrado com sucesso!',
@@ -57,7 +54,6 @@ function Cadastro() {
         <h2>Cadastro</h2>
         <form>
           <div className="user-box">
-            {/* <input type="text" name="apelido" required="" /> */}
             <input
               type="text"
               name="apelido"
@@ -70,7 +66,6 @@ function Cadastro() {
             <label>Apelido</label>
           </div>
           <div className="user-box">
-            {/* <input type="text" name="apelido" required="" /> */}
             <input
               type="text"
               name="apelido"
@@ -83,7 +78,6 @@ function Cadastro() {
             <label>Personagem Favorito</label>
           </div>
           <div className="user-box">
-            {/* <input type="email" name="" required="" /> */}
             <input
               type="text"
               pattern="/^[^\s@]+@[^\s@]+$/"
@@ -96,7 +90,6 @@ function Cadastro() {
             <label>Email</label>
           </div>
           <div className="user-box">
-            {/* <input type="email" name="" required="" /> */}
             <input
               type="text"
               pattern="/^[^\s@]+@[^\s@]+$/"
@@ -110,12 +103,11 @@ function Cadastro() {
           </div>
 
           <div className="user-box">
-            {/* <input type="password" name="" required="" /> */}
             <input
               type="password"
               pattern="[^\0]"
               name="password"
-              required=""
+              required="Digite a senha"
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
             />
@@ -124,29 +116,31 @@ function Cadastro() {
           </div>
 
           <div className="user-box">
-            {/* <input type="email" name="" required="" /> */}
             <input
               type="Date"
               name=""
+              placeholder="Data Nascimento"
               date-format="MM DD YYYY"
-              max="2100-12-31"
+              max="2019-12-31"
               maxLength="8"
-              onBlur="(this.type='text')"
+              required="Digite sua data de nascimento"
               value={dtNascimento}
               onChange={(e) => setDtnascimento(e.target.value)}
             />
-
-            <label>Data de Nascimento</label>
+          </div>
+          <div className="user-box">
+            <input
+              id="upload"
+              name=""
+              type="file"
+              className="file-input"
+              accept="image/*"
+              value={avatar}
+              onChange={(e) => setAvatar(e.target.value)}
+              //onChange={(e)=> { this.readFile(e) }}
+            />
           </div>
 
-          {/* <div className="user-box">
-            <ImageUploader
-              withIcon={true}
-              onChange={onDrop}
-              imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg']}
-              maxFileSize={5242880}
-            />
-          </div> */}
           <Link to="/login">
             <span></span>
             <span></span>
@@ -176,6 +170,7 @@ function Cadastro() {
         personagemFav: personagem,
         emailSecundario: emailSecundario,
         dtNascimento: dtNascimento,
+        avatar:avatar
       })
       .then(function (response) {
         notificarSucessoCadastro(response);
@@ -184,9 +179,6 @@ function Cadastro() {
         console.log('Opa aconteceu esse erro aqui!', error.toJSON());
         notificarFalha(error);
       });
-    setApelido('');
-    setEmail('');
-    setSenha('');
   }
 }
 

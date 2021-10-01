@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Cadastro from '../views/Cadastro';
-import Erro from '../views/Error';
+//import Erro from '../views/Error';
 import Home from '../views/Home';
 import Login from '../views/Login';
 import Profile from '../views/Perfil';

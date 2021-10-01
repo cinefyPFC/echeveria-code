@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {Navbar, NavbarBrand, Nav, NavItem,NavLink, } from 'reactstrap';
 import imgLogo from './img/CinefyLogo.png';
 import './style/menu.css';
-const Menu = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Menu = () => {
 
-  const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>

@@ -51,3 +51,6 @@ li {
 .cast-person .person-body {
   height: 65px !important;
 }
+.nav-link:hover {
+  color: white !important;
+}
