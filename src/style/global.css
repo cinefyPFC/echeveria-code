@@ -54,3 +54,45 @@ li {
 .nav-link:hover {
   color: white !important;
 }
+
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+  max-width: 100%;
+  padding: 0;
+}
+@media (min-width: 1200px){
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+      max-width: 100%;
+      padding: 0;
+  }
+}
+@media (max-width: 767px){
+  .movie-card {
+    width: 79% !important;
+    height: auto !important;
+  }
+}
+@media (max-width:760px){
+  header > .down-header > .search > input {
+    margin: 0 10px !important;
+    width: 100% !important;
+  }
+  .section-header h3 {
+    margin-top: 21px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 800;
+  }
+}
+.movie-card {
+  margin-left: 25px;
+}
+
+.duration, .realease-date, .budget, .revenue {
+  position: relative !important;
+  bottom: 0px !important;
+}
+.duration, .realease-date, .budget, .revenue {
+  position: relative !important;
+  bottom: 0px !important;
+  padding: 0 20px !important;
+}

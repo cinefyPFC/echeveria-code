@@ -3,4 +3,5 @@
     flex-direction: column;
     --header-height: 100px;
     --footer-height: 50px;
+    width: 100%;
 }
