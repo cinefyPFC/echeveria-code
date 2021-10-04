@@ -28,11 +28,14 @@ header > .down-header > .navbar{
 
 header > .down-header > .navbar > ul{
     display: flex;
+    width: 100%;
     flex-direction: row;
     padding: 0;
     margin: 0;
 }
-
+li.linkheaderperfil {
+  margin-left: auto !important;
+}
 header > .down-header > .navbar > ul > li{
     /* padding: 20px 13px; */
     margin-left: 2px;

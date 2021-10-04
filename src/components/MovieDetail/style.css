@@ -16,7 +16,7 @@ div.movie{
     background-color: rgba(0,0,0,.7);
     border-radius: 0 4px 4px 0;
     width: calc(100% - 80px);
-    height: 450px;
+    height: auto;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -84,7 +84,7 @@ div.movie{
   grid-template-rows: 1fr;
   justify-items: center;
   padding: 5px 10px;
-  height: 30px;
+  height: auto;
   font-size: 15px;
 }
 
@@ -121,7 +121,7 @@ div.movie{
 }
 
 
-@media (max-width: 767px){
+@media (max-width: 768px){
     .movie{
         flex-direction: column !important;
         width: calc(100% - 40px) !important;
@@ -139,15 +139,9 @@ div.movie{
         border-radius: 4px;
     }
 
-    .budget, .revenue{
-        display: none;
-    }
-
     .movie-footer{
         margin-top: 10px;
         font-size: 0.8em !important;
-        grid-template-columns: 2fr 1fr !important;
-        border-radius: 0 0 4px 4px;
     }
 
     .movie-overview{
@@ -160,6 +154,32 @@ div.movie{
         padding: 5px 15px;
         font-size: 12px;
     }
+    .movie-detail > .movie-footer {
+      background-color: #222;
+      color: #fff;
+      display: -ms-flexbox;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
+      justify-items: center;
+      padding: 5px 10px;
+      height: auto;
+      font-size: 15px;
+  }
+}
+@media(max-width:600px){
+  .movie-detail > .movie-footer {
+    background-color: #222;
+    color: #fff;
+    display: -ms-flexbox;
+    display: flex;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    padding: 5px 10px;
+    height: auto;
+    font-size: 15px;
+}
 }
 .movie-footer > div {
   display: contents;
