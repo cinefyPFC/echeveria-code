@@ -1,6 +1,7 @@
 import React, {Suspense, lazy} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Container from '../components/Container';
+import ContainerPerfil from '../components/ContainerPerfil';
 
 const Home = lazy(() => import('../components/Home'));
 const HomeTv = lazy(() => import('../components/HomeTv'));
@@ -8,13 +9,22 @@ const MovieDetail = lazy(() => import('../components/MovieDetail'));
 const Discovery = lazy(() => import('../components/Discovery'));
 const Person = lazy(() => import('../components/Person'));
 const Company = lazy(() => import('../components/Company'));
+const Perfil = lazy(() => import('../views/Perfil'));
 
 function Routes() {
 
 	return(
 		<Router>
+
 			<Suspense fallback={<span>Loading...</span>}>
 				<Switch>
+
+          <Route exact path="/perfil">
+						<ContainerPerfil>
+							<Perfil />
+						</ContainerPerfil>
+					</Route>
+
 					<Route exact path="/filmes">
 						<Container>
 							<Home />

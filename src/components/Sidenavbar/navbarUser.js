@@ -18,7 +18,7 @@ const NavbarUser = () => {
             <Link to="/feed"></Link>
           </li>
           <li>
-            <Link to="/feed">Filme</Link>
+            <Link to="/filmes">Filme</Link>
           </li>
           <li>
             <Link to="/feed">Série</Link>

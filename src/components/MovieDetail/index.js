@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-
+import imgUser from './img/images.png';
 import Section from '../Section';
 import Elenco from '../Elenco';
 import MovieImages from '../MovieImages';
@@ -163,10 +163,37 @@ function MovieDetail(props) {
 						{renderMovieFooter(movie)}
 					</div>
 				</div>
+
 			</div>
+
 			<MovieImages id={id} api={medias[media]} />
 			<Section title="Recomendados" f={() => medias[media].recommendations(id)} genres={genres} to={media} limit={5}/>
 			<Elenco cast={cast}/>
+      <div className="movie-list-coments">
+        <div className="img-fluid img-coments">
+          <img className="user-coments-img" src={imgUser} alt="Imagem Usuário" />
+        </div>
+        <div className="movie-user-coments">
+          <h4 className="user-coments=name">
+              Fanta Sabor original
+          </h4>
+          <p className="user-coments">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+            type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+            also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+            the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+            with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          </p>
+        </div>
+      </div>
+      <div className="movie-coments">
+        <textarea className="text-area-movie-coments" placeholder="Digite sua opinião sobre o filme">
+        </textarea>
+      </div>
+      <div className="movie-coments-button">
+        <button className="button-coments">Comentar</button>
+      </div>
 		</div>
 	)
 

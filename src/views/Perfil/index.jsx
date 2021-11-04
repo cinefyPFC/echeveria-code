@@ -32,8 +32,6 @@ function Profile() {
   }, []);
   return (
     <div>
-      <NavbarUser />
-
       <div
         className="page-content page-profile-user page-container"
         id="page-content"
@@ -110,8 +108,8 @@ function Profile() {
                           <Button outline color="warning">
                             Editar
                           </Button>
-                          <Button outline color="danger">
-                            Excluir
+                          <Button outline color="success">
+                            Salvar
                           </Button>
                         </Col>
                       </Row>
