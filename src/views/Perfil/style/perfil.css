@@ -82,6 +82,10 @@ div#page-content {
 button.btn.btn-outline-success {
   margin-left: 60%;
 }
+.icon-upload-foto {
+  position: absolute;
+  top: 80% !important;
+}
 @media (max-width: 700px) {
   .padding {
     padding: 1rem !important;
@@ -94,5 +98,10 @@ button.btn.btn-outline-success {
   }
   button.btn.btn-outline-success {
     margin-left: 50%;
+  }
+}
+@media (max-width:450px){
+  .card-block.text-center.text-white {
+    height: 250px;
   }
 }

@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from '../Header';
+import HeaderPerfil from '../HeaderPerfil';
 import Main from '../Main';
 
 
 function Container() {
     return (
         <div className="container">
-            <Header />
+            <HeaderPerfil />
             <Main>
 
             </Main>

@@ -2,11 +2,23 @@ import React, {useEffect, useState } from 'react';
 import './style/perfil.css';
 import api from '../../services/api';
 import { Col, Row, Button } from 'reactstrap';
-import NavbarUser from '../../components/Sidenavbar/navbarUser';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import IconButton from '@material-ui/core/IconButton';
 
 function Profile() {
   const [usuario, setUsuario] = useState([]);
   const [avatar, setAvatar] = useState([]);
+
+  const handleUploadFile = (e) => setAvatar(e.target.files[0]);
+
+  const uploadImage = async () => {
+
+    const data = new FormData();
+    data.append("avatar", avatar);
+    // ...
+    // chamada POST - para enviar arquivo
+  };
+
   useEffect(() => {
     async function getUsers() {
       let token = sessionStorage.getItem('token');
@@ -50,8 +62,26 @@ function Profile() {
                       />
                       <h6 className="info-user-nome">Cinefy React</h6>
                       <p className="text-center personagem-favorito">{usuario.apelido}</p>
+                        <div>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            style={{ display: 'none' }}
+                            id="contained-button-file"
+                          />
+
+                          <input accept="image/*" id="icon-button-file"
+                            type="file" style={{ display: 'none' }} onChange={handleUploadFile} />
+                          <label className="icon-upload-foto" htmlFor="icon-button-file" title="Alterar Imagem">
+                            <IconButton color="primary" aria-label="upload picture"
+                            component="span">
+                              <PhotoCamera />
+                            </IconButton>
+                          </label>
+                        </div>
                     </div>
                   </Col>
+
                   <Col sm={8} className="conteudo-usuario">
                     <div className="card-block">
                       <h6 className="info-user">Informações</h6>
