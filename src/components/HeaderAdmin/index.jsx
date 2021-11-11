@@ -15,7 +15,7 @@ export default function HeaderAdmin() {
         { <FiUser color="#FFF" size={24} /> }
         Usuário
       </Link>
-      <Link to="#">
+      <Link to="/dashboard/resenhas">
         { <FiSettings color="#FFF" size={24} /> }
         Configurações
       </Link>

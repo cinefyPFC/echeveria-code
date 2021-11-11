@@ -4,8 +4,6 @@ import { Table } from 'reactstrap';
 import './style/gerenciamento.css';
 import { FiUserX, FiEdit} from "react-icons/fi";
 
-
-
 function Usuario() {
   return (
 
@@ -28,23 +26,8 @@ function Usuario() {
               <td className="table-gerenciamento-usuario">Guilherme</td>
               <td className="table-gerenciamento-usuario">guilherme@alunos.umc.br</td>
               <td className="table-gerenciamento-usuario">
-              <FiEdit size='25'></FiEdit> &nbsp;&nbsp;  <FiUserX size='25'></FiUserX>
-                </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td className="table-gerenciamento-usuario">Kelvin</td>
-              <td className="table-gerenciamento-usuario">kelv@umc.br</td>
-              <td className="table-gerenciamento-usuario">
-              <FiEdit size='25'></FiEdit> &nbsp;&nbsp;  <FiUserX size='25'></FiUserX>
-                </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td className="table-gerenciamento-usuario">Micael</td>
-              <td className="table-gerenciamento-usuario">micael@umc.br</td>
-              <td className="table-gerenciamento-usuario">
-                <FiEdit size='25'></FiEdit> &nbsp;&nbsp;  <FiUserX size='25'></FiUserX>
+                <FiEdit size='25'></FiEdit>
+               <FiUserX size='25'></FiUserX>
               </td>
             </tr>
           </tbody>

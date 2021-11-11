@@ -8,7 +8,7 @@ import Profile from '../views/Perfil';
 import Admin from '../views/Dashboard';
 import Dashboard from '../views/Dashboard/Profile';
 import Usuario from '../views/GerenciamentoUsuario';
-
+import Resenha from '../views/GerenciamentoResenha';
 const Router = () => {
   return (
     <BrowserRouter>
@@ -20,7 +20,7 @@ const Router = () => {
         <Route exact path="/perfil" component={Profile} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/dashboard/usuarios" component={Usuario} />
-
+        <Route exact path="/dashboard/resenhas" component={Resenha} />
       </Switch>
     </BrowserRouter>
   );
