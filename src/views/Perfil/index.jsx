@@ -4,6 +4,7 @@ import api from '../../services/api';
 import { Col, Row, Button } from 'reactstrap';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import IconButton from '@material-ui/core/IconButton';
+import HeaderPerfil from '../../components/HeaderPerfil';
 
 function Profile() {
   const [usuario, setUsuario] = useState([]);
@@ -44,6 +45,7 @@ function Profile() {
   }, []);
   return (
     <div>
+      <HeaderPerfil/>
       <div
         className="page-content page-profile-user page-container"
         id="page-content"

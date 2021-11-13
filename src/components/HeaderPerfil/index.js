@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-function Header() {
+function HeaderPerfil() {
 	const [search, setSearch] = useState('');
 
 	function handleChange(e){
@@ -35,4 +35,4 @@ function Header() {
 	);
 }
 
-export default Header;
+export default HeaderPerfil;

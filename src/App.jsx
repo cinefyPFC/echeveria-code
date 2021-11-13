@@ -1,7 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style/global.css';
-import Router from './routes/routes';
 import Routes from './routes';
 
 function App() {
@@ -9,7 +8,6 @@ function App() {
   return (
     <div className="App">
       <Routes />
-      <Router />
     </div>
   );
 }
