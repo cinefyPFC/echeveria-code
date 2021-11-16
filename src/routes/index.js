@@ -1,7 +1,6 @@
 import React, {Suspense, lazy} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Container from '../components/Container';
-import ContainerPerfil from '../components/ContainerPerfil';
 import Perfil from '../views/Perfil';
 import Cadastro from '../views/Cadastro';
 import Erro from '../views/Error';
@@ -9,7 +8,8 @@ import Index from '../views/Home';
 import Login from '../views/Login';
 import Admin from '../views/Dashboard';
 import Dashboard from '../views/Dashboard/Profile';
-
+import gerenciarUsuario from '../components/GerenciamentoUsuario';
+import gerenciarResenha from '../components/GerenciamentoReseha';
 const Home = lazy(() => import('../components/Home'));
 const HomeTv = lazy(() => import('../components/HomeTv'));
 const MovieDetail = lazy(() => import('../components/MovieDetail'));
@@ -28,9 +28,10 @@ function Routes() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/cadastro" component={Cadastro} />
           <Route exact path="/admin" component={Admin} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/dash" component={Dashboard} />
           <Route exact path="/perfil" component={Perfil} />
-
+          <Route exact path="/gerenciarusuarios" component={gerenciarUsuario} />
+          <Route exact path="/gerenciarresenhas" component={gerenciarResenha} />
           <Route exact path="/filmes">
             <Container>
               <Home />

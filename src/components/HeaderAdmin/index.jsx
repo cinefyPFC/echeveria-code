@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col } from 'reactstrap';
 import './header.css';
-import { FiHome, FiUser, FiSettings } from 'react-icons/fi';
+import { FiHome, FiUser, FiEdit } from 'react-icons/fi';
 
 export default function HeaderAdmin() {
   return (
@@ -11,12 +11,12 @@ export default function HeaderAdmin() {
         {<FiHome color="#FFF" size={24} /> }
         Inicio
       </Link>
-      <Link to="/dashboard/usuarios">
+      <Link to="/gerenciarusuarios">
         { <FiUser color="#FFF" size={24} /> }
         Usuário
       </Link>
-      <Link to="/dashboard/resenhas">
-        { <FiSettings color="#FFF" size={24} /> }
+      <Link to="/gerenciarresenhas">
+        { <FiEdit color="#FFF" size={24} /> }
         Configurações
       </Link>
     </Col>
