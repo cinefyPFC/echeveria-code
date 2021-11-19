@@ -1,24 +1,44 @@
-import React, {useEffect, useState } from 'react';
-import './style/perfil.css';
-import api from '../../services/api';
-import { Col, Row, Button } from 'reactstrap';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import React, { useEffect, useState } from 'react';
+import 'react-toastify/dist/ReactToastify.min.css';
+import { Button, Col, Row } from 'reactstrap';
 import HeaderPerfil from '../../components/HeaderPerfil';
+import UploadImage from '../../components/UploadImage';
+import api from '../../services/api';
+import './style/perfil.css';
 
 function Profile() {
   const [usuario, setUsuario] = useState([]);
   const [avatar, setAvatar] = useState([]);
+  const data = new FormData();
 
   const handleUploadFile = (e) => setAvatar(e.target.files[0]);
 
   const uploadImage = async () => {
-
-    const data = new FormData();
-    data.append("avatar", avatar);
-    // ...
-    // chamada POST - para enviar arquivo
+    data.append("arquivo", "/home/guilherme/Pictures/pika.jpeg");
+    let token = sessionStorage.getItem('token');
+    await api
+    await fetch("http://localhost:3333/files", {
+      "method": "POST",
+      "headers": {
+        "Content-Type": `multipart/form-data; boundary=${avatar}`,
+        "Authorization": `Bearer ${token}`,
+      },
+      body: data
+    })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {
+        console.error(err);
+      });
   };
+
+  const prepareImage = (e) => {
+    handleUploadFile(e);
+    uploadImage();
+  }
 
   useEffect(() => {
     async function getUsers() {
@@ -45,7 +65,7 @@ function Profile() {
   }, []);
   return (
     <div>
-      <HeaderPerfil/>
+      <HeaderPerfil />
       <div
         className="page-content page-profile-user page-container"
         id="page-content"
@@ -64,23 +84,24 @@ function Profile() {
                       />
                       <h6 className="info-user-nome">Cinefy React</h6>
                       <p className="text-center personagem-favorito">{usuario.apelido}</p>
-                        <div>
-                          <input
-                            type="file"
-                            accept="image/*"
-                            style={{ display: 'none' }}
-                            id="contained-button-file"
-                          />
+                      <div>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          style={{ display: 'none' }}
+                          id="contained-button-file"
+                        />
+                        <UploadImage />
 
-                          <input accept="image/*" id="icon-button-file"
-                            type="file" style={{ display: 'none' }} onChange={handleUploadFile} />
-                          <label className="icon-upload-foto" htmlFor="icon-button-file" title="Alterar Imagem">
-                            <IconButton color="primary" aria-label="upload picture"
+                        <input accept="image/*" id="icon-button-file"
+                          type="file" style={{ display: 'none' }} onChange={prepareImage} />
+                        <label className="icon-upload-foto" htmlFor="icon-button-file" title="Alterar Imagem">
+                          <IconButton color="primary" aria-label="upload picture"
                             component="span">
-                              <PhotoCamera />
-                            </IconButton>
-                          </label>
-                        </div>
+                            <PhotoCamera />
+                          </IconButton>
+                        </label>
+                      </div>
                     </div>
                   </Col>
 

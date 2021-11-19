@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import imgUser from './img/images.png';
-import Section from '../Section';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import API from '../../services/tmdb';
 import Elenco from '../Elenco';
 import MovieImages from '../MovieImages';
-import API from '../../services/tmdb'
-
+import Section from '../Section';
+import imgUser from './img/images.png';
 import './style.css';
+
 
 const medias = {
 	'tv': API.tv,
@@ -177,7 +177,7 @@ function MovieDetail(props) {
           <h4 className="user-coments=name">
               Fanta Sabor original
           </h4>
-          <p className="user-coments">
+          <p className="user-coments"> // user-resenha
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
             the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
             type and scrambled it to make a type specimen book. It has survived not only five centuries, but
@@ -185,6 +185,8 @@ function MovieDetail(props) {
             the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
             with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
           </p>
+          //add caixinha com gostei ou não gostei
+          //nota
         </div>
       </div>
       <div className="movie-coments">
