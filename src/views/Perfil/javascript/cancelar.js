@@ -1,9 +1,6 @@
 function onClickCancelar() {
-  console.log('Cancelou');
   document.getElementById('Editar').style.display = 'initial';
-
   document.getElementById('Cancelar').style.display = 'none ';
-
   document.getElementById('initialinputapelido').style.display = 'none';
   document.getElementById('initialinputemail').style.display = 'none';
   document.getElementById('initialinputdtnascimento').style.display = 'none';
@@ -11,7 +8,6 @@ function onClickCancelar() {
   document.getElementById('initialinputfilme').style.display = 'none';
   document.getElementById('initialinputserie').style.display = 'none';
   document.getElementById('initialinputdocumentario').style.display = 'none';
-
   document.getElementById('hiddeninfoapelido').style.display = 'initial';
   document.getElementById('hiddeninfoemail').style.display = 'initial';
   document.getElementById('hiddeninfodtnascimento').style.display = 'initial';

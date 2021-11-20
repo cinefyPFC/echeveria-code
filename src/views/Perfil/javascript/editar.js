@@ -1,8 +1,6 @@
 function onClickEditar() {
-  console.log('Editou');
   document.getElementById('Editar').style.display = 'none';
   document.getElementById('Cancelar').style.display = 'initial';
-
   document.getElementById('initialinputapelido').style.display = 'initial';
   document.getElementById('initialinputemail').style.display = 'initial';
   document.getElementById('initialinputdtnascimento').style.display = 'initial';
@@ -10,7 +8,6 @@ function onClickEditar() {
   document.getElementById('initialinputfilme').style.display = 'initial';
   document.getElementById('initialinputserie').style.display = 'initial';
   document.getElementById('initialinputdocumentario').style.display = 'initial';
-
   document.getElementById('hiddeninfoapelido').style.display = 'none';
   document.getElementById('hiddeninfoemail').style.display = 'none';
   document.getElementById('hiddeninfodtnascimento').style.display = 'none';

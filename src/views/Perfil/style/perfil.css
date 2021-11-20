@@ -132,3 +132,8 @@ input[type="file"] {
 .btnDanger, .inputhidden{
   display: none;
 }
+input.editInputStyle {
+  background-color: #2a2727;
+  border: none;
+  color: white;
+}

@@ -11,6 +11,10 @@ import onClickEditar from './javascript/editar';
 function Profile() {
   const [usuario, setUsuario] = useState([]);
   const [avatar, setAvatar] = useState([]);
+  const [apelido, setApelido] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [dtNascimento, setDtnascimento] = useState('');
 
   const data = new FormData();
 
@@ -64,6 +68,7 @@ function Profile() {
     getUsers();
   }, []);
 
+
   return (
     <div>
       <HeaderPerfil />
@@ -94,15 +99,18 @@ function Profile() {
                           <p className="info-user">Apelido</p>
                           <div className="hiddeninfo" id="hiddeninfoapelido">
                             <p className="text-muted info-database">
-                              {usuario.apelido}aaaaa
+                              {usuario.apelido}
                             </p>
                           </div>
                           <div id="initialinputapelido" className="inputhidden">
                             <input
+                              className="editInputStyle"
                               type="text"
                               name="apelido"
                               pattern="[^\0]"
                               required=""
+                              value={apelido}
+                              onChange={(e) => setApelido(e.target.value)}
                             />
                           </div>
                         </Col>
@@ -110,11 +118,19 @@ function Profile() {
                           <p className="info-user">Email</p>
                           <div className="hiddeninfo" id="hiddeninfoemail">
                             <p className="text-muted info-database">
-                              {usuario.email}aaaaa
+                              {usuario.email}
                             </p>
                           </div>
                           <div id="initialinputemail" className="inputhidden">
-                            <input></input>
+                          <input
+                            className="editInputStyle"
+                            type="text"
+                            pattern="/^[^\s@]+@[^\s@]+$/"
+                            name=""
+                            required=""
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                          />
                           </div>
                         </Col>
                         <Col sm={6}>
@@ -124,11 +140,12 @@ function Profile() {
                             id="hiddeninfodtnascimento"
                           >
                             <p className="text-muted info-database">
-                              {usuario.dtNascimento}aaaaa
+                              {usuario.dtNascimento}
                             </p>
                           </div>
                           <div id="initialinputdtnascimento" className="inputhidden">
                             <input
+                              className="editInputStyle"
                               type="Date"
                               name=""
                               placeholder="Data Nascimento"
@@ -136,6 +153,8 @@ function Profile() {
                               max="2019-12-31"
                               maxLength="8"
                               required="Digite sua data de nascimento"
+                              value={dtNascimento}
+                              onChange={(e) => setDtnascimento(e.target.value)}
                             />
                           </div>
                         </Col>
@@ -147,7 +166,15 @@ function Profile() {
                             </p>
                           </div>
                           <div id="initialinputsenha" className="inputhidden">
-                            <input></input>
+                            <input
+                              className="editInputStyle"
+                              type="password"
+                              pattern="[^\0]"
+                              name="password"
+                              required="Digite a senha"
+                              value={senha}
+                              onChange={(e) => setSenha(e.target.value)}
+                            />
                           </div>
                         </Col>
                       </Row>
@@ -161,7 +188,9 @@ function Profile() {
                             </p>
                           </div>
                           <div id="initialinputfilme" className="inputhidden">
-                          <input></input>
+                          <input
+                            className="editInputStyle"
+                          />
                           </div>
                         </Col>
                         <Col sm={4}>
@@ -172,7 +201,9 @@ function Profile() {
                             </p>
                           </div>
                           <div id="initialinputserie" className="inputhidden">
-                          <input></input>
+                          <input
+                            className="editInputStyle"
+                          />
                           </div>
                         </Col>
                         <Col sm={4}>
@@ -183,7 +214,9 @@ function Profile() {
                             </p>
                           </div>
                           <div id="initialinputdocumentario" className="inputhidden">
-                          <input></input>
+                            <input
+                              className="editInputStyle"
+                            />
                           </div>
                         </Col>
                       </Row>
