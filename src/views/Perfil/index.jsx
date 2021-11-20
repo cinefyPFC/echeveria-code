@@ -1,5 +1,3 @@
-import IconButton from '@material-ui/core/IconButton';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import React, { useEffect, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { Button, Col, Row } from 'reactstrap';
@@ -77,31 +75,10 @@ function Profile() {
                 <Row className="rowInfoUsario">
                   <Col sm={4} className="bg-uf user-profile">
                     <div className="card-block text-center text-white">
-                      <img
-                        src={avatar}
-                        alt="Imagem usuario"
-                        className="img-radius"
-                      />
+                      <UploadImage />
                       <h6 className="info-user-nome">Cinefy React</h6>
                       <p className="text-center personagem-favorito">{usuario.apelido}</p>
-                      <div>
-                        <input
-                          type="file"
-                          accept="image/*"
-                          style={{ display: 'none' }}
-                          id="contained-button-file"
-                        />
-                        <UploadImage />
 
-                        <input accept="image/*" id="icon-button-file"
-                          type="file" style={{ display: 'none' }} onChange={prepareImage} />
-                        <label className="icon-upload-foto" htmlFor="icon-button-file" title="Alterar Imagem">
-                          <IconButton color="primary" aria-label="upload picture"
-                            component="span">
-                            <PhotoCamera />
-                          </IconButton>
-                        </label>
-                      </div>
                     </div>
                   </Col>
 
@@ -112,8 +89,8 @@ function Profile() {
                         <Col sm={6}>
                           <p className="info-user">Apelido</p>
                           <h6 className="text-muted info-database">
-                            {usuario.apelido}
 
+                            {usuario.apelido}
                           </h6>
                         </Col>
                         <Col sm={6}>

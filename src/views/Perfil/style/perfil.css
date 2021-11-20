@@ -100,8 +100,32 @@ button.btn.btn-outline-success {
     margin-left: 50%;
   }
 }
-@media (max-width:450px){
+@media (max-width: 450px) {
   .card-block.text-center.text-white {
-    height: 250px;
+    height: 400px;
   }
+}
+
+img.img-preview {
+  max-width: 200px;
+}
+input[type='file'] {
+  color: transparent;
+}
+input.submit-img {
+  border: 0;
+  margin-top: 30px;
+  padding: 7px 25px;
+  border-radius: 39px;
+  background-color: transparent;
+  box-shadow: 0px 0px 20px 6px #5e131d;
+}
+input[type="file"] {
+  display: none;
+}
+
+.label-bordered {
+  border: 1px solid #cecece;
+  padding: 10px;
+  border-radius: 5px;
 }
