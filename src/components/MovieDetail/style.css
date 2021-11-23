@@ -229,3 +229,22 @@ p.user-coments {
     width: 430px;
   }
 }
+
+
+label.radio-custom-label.naogostei > input:checked + svg {
+  width: 30px;
+  height: 30px;
+  color: red;
+}
+
+label.radio-custom-label.gostei > input:checked + svg {
+  width: 30px;
+  height: 30px;
+  color: green;
+}
+
+.radio-image label > input + svg {
+  width: 30px;
+  height: 30px;
+}
+
