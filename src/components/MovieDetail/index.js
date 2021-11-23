@@ -6,7 +6,7 @@ import MovieImages from '../MovieImages';
 import Section from '../Section';
 import imgUser from './img/images.png';
 import './style.css';
-import { AiFillLike, AiFillDislike } from 'react-icons/ai';
+import { AiFillLike, AiFillDislike, AiOutlineStar } from 'react-icons/ai';
 
 const medias = {
   tv: API.tv,
@@ -224,18 +224,56 @@ function MovieDetail(props) {
             Aldus PageMaker including versions of Lorem Ipsum.
           </p>
           <di className="radio-image">
-            <label for="gostei" class="radio-custom-label gostei">
+            <label
+              for="gostei"
+              class="radio-custom-label gostei"
+              value="gostei"
+            >
               <input name="radio-group" type="radio" />
               <AiFillLike />
             </label>
-            </di>
-            <div className="radio-image">
-            <label for="naogostei" class="radio-custom-label naogostei">
+          </di>
+          <div className="radio-image">
+            <label
+              for="naogostei"
+              class="radio-custom-label naogostei"
+              value="naogostei"
+            >
               <input name="radio-group" type="radio" />
               <AiFillDislike />
             </label>
           </div>
-          //nota
+          <div className="nota">
+            <div class="estrelas">
+              <input
+                type="radio"
+                id="cm_star-empty"
+                name="fb"
+                value=""
+                checked
+              />
+              <label for="cm_star-1">
+                <AiOutlineStar/>
+              </label>
+              <input type="radio" id="cm_star-1" name="fb" value="1" />
+              <label for="cm_star-2">
+                <AiOutlineStar/>
+              </label>
+              <input type="radio" id="cm_star-2" name="fb" value="2" />
+              <label for="cm_star-3">
+                <AiOutlineStar/>
+              </label>
+              <input type="radio" id="cm_star-3" name="fb" value="3" />
+              <label for="cm_star-4">
+                <AiOutlineStar/>
+              </label>
+              <input type="radio" id="cm_star-4" name="fb" value="4" />
+              <label for="cm_star-5">
+                <AiOutlineStar/>
+              </label>
+              <input type="radio" id="cm_star-5" name="fb" value="5" />
+            </div>
+          </div>
         </div>
       </div>
       <div className="movie-coments">
