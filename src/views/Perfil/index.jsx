@@ -4,9 +4,9 @@ import { Button, Col, Row } from 'reactstrap';
 import HeaderPerfil from '../../components/HeaderPerfil';
 import UploadImage from '../../components/UploadImage';
 import api from '../../services/api';
-import './style/perfil.css';
 import onClickCancelar from './javascript/cancelar';
 import onClickEditar from './javascript/editar';
+import './style/perfil.css';
 
 function Profile() {
   const [usuario, setUsuario] = useState([]);
@@ -83,11 +83,10 @@ function Profile() {
                 <Row className="rowInfoUsario">
                   <Col sm={4} className="bg-uf user-profile">
                     <div className="card-block text-center text-white">
-                      <UploadImage />
-                      <p className="info-user-nome">Cinefy React</p>
                       <p className="text-center personagem-favorito">
                         {usuario.apelido}
                       </p>
+                      <UploadImage />
                     </div>
                   </Col>
 
@@ -122,15 +121,15 @@ function Profile() {
                             </p>
                           </div>
                           <div id="initialinputemail" className="inputhidden">
-                          <input
-                            className="editInputStyle"
-                            type="text"
-                            pattern="/^[^\s@]+@[^\s@]+$/"
-                            name=""
-                            required=""
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                          />
+                            <input
+                              className="editInputStyle"
+                              type="text"
+                              pattern="/^[^\s@]+@[^\s@]+$/"
+                              name=""
+                              required=""
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                            />
                           </div>
                         </Col>
                         <Col sm={6}>
@@ -188,9 +187,9 @@ function Profile() {
                             </p>
                           </div>
                           <div id="initialinputfilme" className="inputhidden">
-                          <input
-                            className="editInputStyle"
-                          />
+                            <input
+                              className="editInputStyle"
+                            />
                           </div>
                         </Col>
                         <Col sm={4}>
@@ -201,9 +200,9 @@ function Profile() {
                             </p>
                           </div>
                           <div id="initialinputserie" className="inputhidden">
-                          <input
-                            className="editInputStyle"
-                          />
+                            <input
+                              className="editInputStyle"
+                            />
                           </div>
                         </Col>
                         <Col sm={4}>

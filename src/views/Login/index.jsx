@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import api from '../../services/api';
 import { Link, useHistory } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+import api from '../../services/api';
 
 function Login() {
   let history = useHistory();
@@ -70,9 +70,6 @@ function Login() {
             />
             <label>Senha</label>
           </div>
-          <Link className="esqueci-senha" to="#">
-            esqueci a senha
-          </Link>
           <Link to="#" onClick={loginUsuario}>
             <span></span>
             <span></span>
@@ -109,8 +106,9 @@ function Login() {
         // if response = 200, então salva o token no sessionStorage, manda um tostezada de sucesso e redireciona. Na pg de perfil
         // receber fazendo o showUsuario para mostrar o perfil do usuario que acabou de logar passando o token
       })
-      .catch(function (error) {
-        notificarFalha(error);
+      .catch(function (erro) {
+        console.log(erro)
+        notificarFalha(erro);
       });
     setEmail('');
     setSenha('');
