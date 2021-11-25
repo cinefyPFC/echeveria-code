@@ -10,7 +10,7 @@ function Login() {
   const [senha, setSenha] = useState('');
 
   const notificarFalha = (error) => {
-    toast.error(`${error.response.data.erro}`, {
+    toast.error(`Erro na validação de dados`, {
       position: 'top-right',
       autoClose: 5000,
       hideProgressBar: false,
@@ -106,9 +106,8 @@ function Login() {
         // if response = 200, então salva o token no sessionStorage, manda um tostezada de sucesso e redireciona. Na pg de perfil
         // receber fazendo o showUsuario para mostrar o perfil do usuario que acabou de logar passando o token
       })
-      .catch(function (erro) {
-        console.log(erro)
-        notificarFalha(erro);
+      .catch(function (error) {
+        notificarFalha(error);
       });
     setEmail('');
     setSenha('');
