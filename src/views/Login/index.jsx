@@ -95,20 +95,35 @@ function Login() {
   // }
 
   async function loginUsuario() {
-    await api
-      .post('sessions', {
-        email: email,
-        senha: senha,
-      })
-      .then(function (response) {
-        notificarSucessoLogin(response);
-        console.log(response);
-        // if response = 200, então salva o token no sessionStorage, manda um tostezada de sucesso e redireciona. Na pg de perfil
-        // receber fazendo o showUsuario para mostrar o perfil do usuario que acabou de logar passando o token
-      })
-      .catch(function (error) {
-        notificarFalha(error);
-      });
+    if (email != /^[^\s@]+@[^\s@]+$/) {
+      await api
+        .post('sessions', {
+          apelido: email,
+          senha: senha,
+        }).then(function (response) {
+          notificarSucessoLogin(response);
+          console.log(response);
+          // if response = 200, então salva o token no sessionStorage, manda um tostezada de sucesso e redireciona. Na pg de perfil
+          // receber fazendo o showUsuario para mostrar o perfil do usuario que acabou de logar passando o token
+        })
+        .catch(function (error) {
+          notificarFalha(error);
+        });
+    } else {
+      await api
+        .post('sessions', {
+          email: email,
+          senha: senha,
+        }).then(function (response) {
+          notificarSucessoLogin(response);
+          console.log(response);
+          // if response = 200, então salva o token no sessionStorage, manda um tostezada de sucesso e redireciona. Na pg de perfil
+          // receber fazendo o showUsuario para mostrar o perfil do usuario que acabou de logar passando o token
+        })
+        .catch(function (error) {
+          notificarFalha(error);
+        });
+    }
     setEmail('');
     setSenha('');
   }
