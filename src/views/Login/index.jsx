@@ -23,7 +23,7 @@ function Login() {
 
   const notificarSucessoLogin = (response) => {
     toast.success(
-      `Usuario ${response.data.usuario.apelido} logado com sucesso!`,
+      `Usuario logado com sucesso!`,
       {
         position: 'top-right',
         onClose: () => completarLogin(response.data),

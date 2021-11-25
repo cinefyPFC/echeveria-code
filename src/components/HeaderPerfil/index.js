@@ -27,7 +27,8 @@ function HeaderPerfil() {
         .then(r => {
           document.getElementsByClassName('search-result')[0].style.display = 'block';
           setResults(r.data.results);
-          console.log(r.data)
+          console.log(r.data);
+          renderResults(r)
         }).catch(function (error) {
           console.error(error);
         });
@@ -46,7 +47,7 @@ function HeaderPerfil() {
         <div className="search">
           <input type="text" value={search} onChange={handleChange} placeholder="Buscar usuário" autoComplete="off" />
           <div className="search-result">
-            {renderResultsCompany()}
+            {renderResults()}
           </div>
         </div>
 
@@ -66,18 +67,19 @@ function HeaderPerfil() {
 }
 
 
-function renderResultsCompany() {
+function renderResults(r) {
+  console.log(r)
   return (
-    resultsCompany.slice(0, 10).map(r => {
+    r.slice(0, 10).map(r => {
       return <div key={r.id} onClick={() => { document.getElementsByClassName('search-result')[0].style.display = 'none' }}>
-        <Link to={`/company/${r.id}`}>
+        <Link to={`/Usuario/${r.id}`}>
           <div className='search-image'>
-            <img src={API.image(r.logo_path, 'w200')} alt="Produtoras" />
+            {/* <img src={API.image(r.logo_path, 'w200')} alt="Produtoras" /> */}
           </div>
 
           <div className="search-content">
             <div className="search-name">
-              {r.name}
+              {r}
             </div>
           </div>
         </Link>
