@@ -274,8 +274,6 @@ function MovieDetail(props) {
                 />
                 <AiFillLike />
               </label>
-            </div>
-            <div className="radio-image">
               <label for="naogostei" class="radio-custom-label naogostei">
                 <input
                   id="naogostei"

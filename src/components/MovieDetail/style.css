@@ -272,18 +272,13 @@ label.nota > input:checked + svg {
   justify-content: center;
 }
 .avaliacacaoResenha {
-  display: flex;
+  display: block;
 }
 .notaTitulo {
   padding: 5px 20px;
+  text-align: center;
 }
-
-@media (max-width: 768px) {
-  .notaResenha {
-    display: block;
-    justify-content: center;
-  }
-  .notaTitulo {
-    text-align: center;
-}
+.notaResenha {
+  display: block;
+  justify-content: center;
 }
