@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import api from '../../services/api';
 import { Link, useHistory } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+import api from '../../services/api';
 
 function Login() {
   let history = useHistory();
@@ -10,7 +10,7 @@ function Login() {
   const [senha, setSenha] = useState('');
 
   const notificarFalha = (error) => {
-    toast.error(`${error.response.data.erro}`, {
+    toast.error(`Erro na validação de dados`, {
       position: 'top-right',
       autoClose: 5000,
       hideProgressBar: false,
@@ -23,7 +23,7 @@ function Login() {
 
   const notificarSucessoLogin = (response) => {
     toast.success(
-      `Usuario ${response.data.usuario.apelido} logado com sucesso!`,
+      `Usuario logado com sucesso!`,
       {
         position: 'top-right',
         onClose: () => completarLogin(response.data),
@@ -70,9 +70,6 @@ function Login() {
             />
             <label>Senha</label>
           </div>
-          <Link className="esqueci-senha" to="#">
-            esqueci a senha
-          </Link>
           <Link to="#" onClick={loginUsuario}>
             <span></span>
             <span></span>
@@ -98,20 +95,35 @@ function Login() {
   // }
 
   async function loginUsuario() {
-    await api
-      .post('sessions', {
-        email: email,
-        senha: senha,
-      })
-      .then(function (response) {
-        notificarSucessoLogin(response);
-        console.log(response);
-        // if response = 200, então salva o token no sessionStorage, manda um tostezada de sucesso e redireciona. Na pg de perfil
-        // receber fazendo o showUsuario para mostrar o perfil do usuario que acabou de logar passando o token
-      })
-      .catch(function (error) {
-        notificarFalha(error);
-      });
+    if (email != /^[^\s@]+@[^\s@]+$/) {
+      await api
+        .post('sessions', {
+          apelido: email,
+          senha: senha,
+        }).then(function (response) {
+          notificarSucessoLogin(response);
+          console.log(response);
+          // if response = 200, então salva o token no sessionStorage, manda um tostezada de sucesso e redireciona. Na pg de perfil
+          // receber fazendo o showUsuario para mostrar o perfil do usuario que acabou de logar passando o token
+        })
+        .catch(function (error) {
+          notificarFalha(error);
+        });
+    } else {
+      await api
+        .post('sessions', {
+          email: email,
+          senha: senha,
+        }).then(function (response) {
+          notificarSucessoLogin(response);
+          console.log(response);
+          // if response = 200, então salva o token no sessionStorage, manda um tostezada de sucesso e redireciona. Na pg de perfil
+          // receber fazendo o showUsuario para mostrar o perfil do usuario que acabou de logar passando o token
+        })
+        .catch(function (error) {
+          notificarFalha(error);
+        });
+    }
     setEmail('');
     setSenha('');
   }

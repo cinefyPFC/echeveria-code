@@ -8,13 +8,12 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:react-hooks/recommended'
   ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 'latest',
+    ecmaVersion: 11,
     sourceType: 'module',
   },
   plugins: ['react'],
@@ -25,6 +24,8 @@ module.exports = {
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+    "no-restricted-globals": ["error", "event", "fdescribe"]
   },
 };
+
