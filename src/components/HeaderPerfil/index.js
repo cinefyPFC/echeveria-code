@@ -16,7 +16,6 @@ function HeaderPerfil() {
 				<div className="search">
 					<input type="text" value={search} onChange={handleChange} placeholder="Buscar usuário" autoComplete="off"/>
 					<div className="search-result">
-
 					</div>
 				</div>
 
@@ -27,6 +26,7 @@ function HeaderPerfil() {
 						<li><Link to="/tv">Séries</Link></li>
 						<li><Link to="/discovery">Descubra novos filmes</Link></li>
             <li><Link to="/perfil">Perfil</Link></li>
+            <li><Link to="/favoritos">Favoritos</Link></li>
             <li className="Logout-Lista"><Link className="Logout">Sair</Link></li>
 					</ul>
 				</div>

@@ -1,133 +1,130 @@
-header{
-    background-color: #D0183E;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
+header {
+  background-color: #a11631;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
 }
 
-header > div{
-    display: flex;
-    flex-direction: row;
+header > div {
+  display: flex;
+  flex-direction: row;
 }
 
-header > .up-header{
-    justify-content: center;
-    border-bottom: 1px solid;
+header > .up-header {
+  justify-content: center;
+  border-bottom: 1px solid;
 }
 
-header > .down-header{
-    display: block;
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* height: 37px; */
+header > .down-header {
+  display: block;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* height: 37px; */
 }
 
-header > .down-header > .navbar{
-    /* width: 100vw; */
+header > .down-header > .navbar {
+  /* width: 100vw; */
 }
 
-header > .down-header > .navbar > ul{
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    padding: 0;
-    margin: 0;
+header > .down-header > .navbar > ul {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
 }
 li.linkheaderperfil {
   margin-left: auto !important;
 }
-header > .down-header > .navbar > ul > li{
-    /* padding: 20px 13px; */
-    margin-left: 2px;
-    font-size: 15px;
-    list-style-type: none;
-    cursor: pointer;
-    transition: linear 0.1s;
+header > .down-header > .navbar > ul > li {
+  /* padding: 20px 13px; */
+  margin-left: 2px;
+  font-size: 15px;
+  list-style-type: none;
+  cursor: pointer;
+  transition: linear 0.1s;
 }
 
-header > .down-header > .navbar > ul > li > a{
-    text-decoration: none;
-    color: #fff;
-    padding: 20px 13px;
-    display: inline-block;
+header > .down-header > .navbar > ul > li > a {
+  text-decoration: none;
+  color: #fff;
+  padding: 20px 13px;
+  display: inline-block;
 }
 
-header > .down-header > .navbar > ul > li > a:hover{
-    background-color: #D0183E;
+header > .down-header > .navbar > ul > li > a:hover {
+  background-color: #d0183e;
 }
 
-header > .down-header > .search{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 10px;
-
+header > .down-header > .search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 10px;
 }
 
-header > .down-header > .search > input{
-    padding: 10px 15px;
-    width: 50%;
-    border: none;
-    outline: none;
-    border-radius: 15px;
-    box-shadow: 1px 1px 1px #aaa;
+header > .down-header > .search > input {
+  padding: 10px 15px;
+  width: 50%;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px #aaa;
 }
 
-.search-result{
-    width: 60vw;
-    position: absolute;
-    top: 120px;
-    background-color: #fff;
-    color: #222;
-    z-index: 10;
-    box-shadow: 1px 1px 2px #333;
-    border-radius: 0 4px 4px 4px;
-    display: none;
-    max-height: calc(100vh - 130px);
-    overflow: auto;
+.search-result {
+  width: 60vw;
+  position: absolute;
+  top: 120px;
+  background-color: #fff;
+  color: #222;
+  z-index: 10;
+  box-shadow: 1px 1px 2px #333;
+  border-radius: 0 4px 4px 4px;
+  display: none;
+  max-height: calc(100vh - 130px);
+  overflow: auto;
 }
 
 .search-result > div > a {
-    display: flex;
-    padding: 10px;
-    border-bottom: solid 1px #ccc;
+  display: flex;
+  padding: 10px;
+  border-bottom: solid 1px #ccc;
 }
 
-.search-result a{
-    text-decoration: none;
-    color: #222;
+.search-result a {
+  text-decoration: none;
+  color: #222;
 }
 
-.search-result > div img{
-    width: 80px;
-    height: 120px;
+.search-result > div img {
+  width: 80px;
+  height: 120px;
 }
 
-.search-result .search-content{
-    height: 120px;
-    overflow: hidden;
+.search-result .search-content {
+  height: 120px;
+  overflow: hidden;
 }
 
-.search-name{
-    font-size: 15px;
-    margin: 5px 10px;
+.search-name {
+  font-size: 15px;
+  margin: 5px 10px;
 }
 
-
-.search-description{
-    font-size: 13px;
-    margin: 5px 10px;
+.search-description {
+  font-size: 13px;
+  margin: 5px 10px;
 }
 
+@media (max-width: 767px) {
+  header > .down-header > .search > input {
+    margin-left: 20px;
+  }
 
-@media (max-width:767px){
-    header > .down-header > .search > input{
-        margin-left: 20px;
-    }
-
-    .navbar{
-        width: auto !important;
-    }
+  .navbar {
+    width: auto !important;
+  }
 }
 header > .down-header > .search > input {
   padding: 10px 15px;

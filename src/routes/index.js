@@ -10,6 +10,9 @@ import Admin from '../views/Dashboard';
 import Dashboard from '../views/Dashboard/Profile';
 import gerenciarUsuario from '../components/GerenciamentoUsuario';
 import gerenciarResenha from '../components/GerenciamentoReseha';
+//import Favoritos from '../components/Favoritos';
+import Favoritos from '../components/Favoritos/index.jsx';
+
 const Home = lazy(() => import('../components/Home'));
 const HomeTv = lazy(() => import('../components/HomeTv'));
 const MovieDetail = lazy(() => import('../components/MovieDetail'));
@@ -32,6 +35,13 @@ function Routes() {
           <Route exact path="/perfil" component={Perfil} />
           <Route exact path="/gerenciarusuarios" component={gerenciarUsuario} />
           <Route exact path="/gerenciarresenhas" component={gerenciarResenha} />
+
+          <Route exact path="/favoritos">
+            <Container>
+              <Favoritos />
+              </Container>
+          </Route>
+
           <Route exact path="/filmes">
             <Container>
               <Home />

@@ -31,7 +31,6 @@ function Header() {
 		}
 	}, [search])
 
-
 	function handleChange(e){
 		setSearch(e.target.value);
 	}
@@ -152,6 +151,7 @@ function Header() {
 						<li><Link to="/tv">Séries</Link></li>
 						<li><Link to="/discovery">Descubra novos filmes</Link></li>
             <li><Link to="/perfil">Perfil</Link></li>
+            <li><Link to="/favoritos">Favoritos</Link></li>
 					</ul>
 				</div>
 			</div>

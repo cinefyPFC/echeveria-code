@@ -153,6 +153,23 @@ function MovieDetail(props) {
     return `$ ${money}`;
   }
 
+  function salvaFilme() {
+    const minhaLista = localStorage.getItem('filmes');
+    let filmesSalvos = JSON.parse(minhaLista) || [];
+    //Se tiver algum filme salvo com esse mesmo id precisa ignorar...
+    const hasFilme = filmesSalvos.some(
+      (filmeSalvo) => filmeSalvo.id === movie.id,
+    );
+    if (hasFilme) {
+      console.error('Você já possui esse filme salvo.');
+      return;
+      //Para execuçao do código aqui...
+    }
+    filmesSalvos.push(movie);
+    localStorage.setItem('filmes', JSON.stringify(filmesSalvos));
+    console.log('Filme salvo com sucesso!');
+  }
+
   if (!movie.title && !movie.name) {
     return <span>Loading</span>;
   }
@@ -176,6 +193,15 @@ function MovieDetail(props) {
           </div>
           <div className="movie-overview">{movie.overview}</div>
           <div className="movie-genres">{renderGenres()}</div>
+          <div className="botoes">
+            <button onClick={salvaFilme}>Adicionar aos favoritos</button>
+            <a
+              target="blank"
+              href={`https://youtube.com/results?search_query=${movie.title} Trailer`}
+            >
+              Assistir Trailer
+            </a>
+          </div>
           <div className="movie-casting">
             <div className="movie-director">
               {media === 'tv' ? 'Criada por: ' : 'Diretor: '}
@@ -223,56 +249,36 @@ function MovieDetail(props) {
             passages, and more recently with desktop publishing software like
             Aldus PageMaker including versions of Lorem Ipsum.
           </p>
-          <di className="radio-image">
+          <div className="radio-image">
             <label
               for="gostei"
               class="radio-custom-label gostei"
               value="gostei"
             >
-              <input name="radio-group" type="radio" />
+              <input id="gostei" name="radio-group" type="radio" />
               <AiFillLike />
             </label>
-          </di>
+          </div>
           <div className="radio-image">
             <label
               for="naogostei"
               class="radio-custom-label naogostei"
               value="naogostei"
             >
-              <input name="radio-group" type="radio" />
+              <input id="naogostei" name="radio-group" type="radio" />
               <AiFillDislike />
             </label>
           </div>
+
           <div className="nota">
-            <div class="estrelas">
-              <input
-                type="radio"
-                id="cm_star-empty"
-                name="fb"
-                value=""
-                checked
-              />
-              <label for="cm_star-1">
-                <AiOutlineStar/>
-              </label>
-              <input type="radio" id="cm_star-1" name="fb" value="1" />
-              <label for="cm_star-2">
-                <AiOutlineStar/>
-              </label>
-              <input type="radio" id="cm_star-2" name="fb" value="2" />
-              <label for="cm_star-3">
-                <AiOutlineStar/>
-              </label>
-              <input type="radio" id="cm_star-3" name="fb" value="3" />
-              <label for="cm_star-4">
-                <AiOutlineStar/>
-              </label>
-              <input type="radio" id="cm_star-4" name="fb" value="4" />
-              <label for="cm_star-5">
-                <AiOutlineStar/>
-              </label>
-              <input type="radio" id="cm_star-5" name="fb" value="5" />
-            </div>
+            <label
+              for="umestrela"
+              class="radio-custom-label umestrela"
+              value="umestrela"
+            >
+              <input type="number" min="0" max="5"/>
+
+            </label>
           </div>
         </div>
       </div>

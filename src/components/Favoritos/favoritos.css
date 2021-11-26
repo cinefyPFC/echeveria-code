@@ -1,0 +1,56 @@
+
+img.listaFavoritosImagem {
+  max-width: 350px;
+}
+.listaFavoritosID{
+  display: none;
+}
+li.listaFavoritos {
+  text-align: center;
+  margin: 10px 36px;
+}
+.UlFavorito{
+  display: flex;
+  flex-flow:wrap;
+}
+button.listaFavoritosBotao {
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: white;
+  background-color: #d0183e;
+  margin-top: 15px;
+}
+span.listaFavoritosNome {
+  font-size: 18px;
+  font-weight: bold;
+}
+.botoes button {
+  border: solid 1px #D0183E;
+  padding: 8px 20px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 4px;
+  background-color: #D0183E;
+  font-size: 14px;
+  color: white;
+  margin-top: 10px;
+}
+.botoes a {
+  border: solid 1px #D0183E;
+  padding: 8px 20px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 4px;
+  background-color: #D0183E;
+  font-size: 14px;
+  color: white;
+  margin-top: 10px;
+  text-decoration:none;
+}
+.botoes button a {
+  color: white;
+}
+.botoes {
+  margin: 0 auto;
+}
