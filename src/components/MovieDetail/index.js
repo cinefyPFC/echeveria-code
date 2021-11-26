@@ -6,7 +6,7 @@ import MovieImages from '../MovieImages';
 import Section from '../Section';
 import imgUser from './img/images.png';
 import './style.css';
-import { AiFillLike, AiFillDislike, AiOutlineStar } from 'react-icons/ai';
+import { AiFillLike, AiFillDislike, AiFillStar } from 'react-icons/ai';
 
 const medias = {
   tv: API.tv,
@@ -259,57 +259,77 @@ function MovieDetail(props) {
             passages, and more recently with desktop publishing software like
             Aldus PageMaker including versions of Lorem Ipsum.
           </p>
-          <div className="radio-image">
-            <label
-              for="gostei"
-              class="radio-custom-label gostei"
-              value="gostei"
-            >
-              <input
-                id="gostei"
-                name="radio-group"
-                type="radio"
-                value="TRUE" //BOOLEAN
-              />
-              <AiFillLike />
-            </label>
+          <div className="avaliacacaoResenha">
+            <div className="radio-image">
+              <label
+                for="gostei"
+                class="radio-custom-label gostei"
+                value="gostei"
+              >
+                <input
+                  id="gostei"
+                  name="radio-group"
+                  type="radio"
+                  value="TRUE" //BOOLEAN
+                />
+                <AiFillLike />
+              </label>
+            </div>
+            <div className="radio-image">
+              <label for="naogostei" class="radio-custom-label naogostei">
+                <input
+                  id="naogostei"
+                  name="radio-group"
+                  type="radio"
+                  value="FALSO" //BOOLEAN
+                />
+                <AiFillDislike />
+              </label>
+            </div>
           </div>
-          <div className="radio-image">
-            <label for="naogostei" class="radio-custom-label naogostei">
-              <input
-                id="naogostei"
-                name="radio-group"
-                type="radio"
-                value="FALSO" //BOOLEAN
-              />
-              <AiFillDislike />
+        </div>
+      </div>
+      <div className="notaResenha">
+        <div className="movie-coments">
+          <textarea
+            className="text-area-movie-coments"
+            placeholder="Digite sua opinião sobre o filme"
+          ></textarea>
+        </div>
+        <div className="notaTitulo">
+          <h4>Seleciona sua nota</h4>
+          <div class="estrelas">
+            <label for="cm_star-1" className="nota" title="nota 1">
+              <input type="radio" id="cm_star-1" name="fb" value="1" />
+              <AiFillStar />
             </label>
-          </div>
-
-          <div className="nota">
-            <label
-              for="nota"
-              class="radio-custom-label umestrela"
-              value="umestrela"
-            >
-              <input
-                id="nota"
-                onBlurCapture={validar}
-                className="inputNota"
-                type="number"
-              />
+            <label for="cm_star-2" className="nota" title="nota 2">
+              <input type="radio" id="cm_star-2" name="fb" value="2" />
+              <AiFillStar />
+            </label>
+            <label for="cm_star-3" className="nota" title="nota 3">
+              <input type="radio" id="cm_star-3" name="fb" value="3" />
+              <AiFillStar />
+            </label>
+            <label for="cm_star-4" className="nota" title="nota 4">
+              <input type="radio" id="cm_star-4" name="fb" value="4" />
+              <AiFillStar />
+            </label>
+            <label for="cm_star-5" className="nota" title="nota 5">
+              <input type="radio" id="cm_star-5" name="fb" value="5" />
+              <AiFillStar />
             </label>
           </div>
         </div>
       </div>
-      <div className="movie-coments">
-        <textarea
-          className="text-area-movie-coments"
-          placeholder="Digite sua opinião sobre o filme"
-        ></textarea>
-      </div>
       <div className="movie-coments-button">
-        <button className="button-coments" onLoad={idfilme} onClick={function mandarComentario(){console.log('ARRUMAR AQUII')}}>
+        <button
+          className="button-coments"
+          onLoad={idfilme}
+          onClick={function mandarComentario() {
+            console.log('ARRUMAR AQUII');
+          }}
+        >
           Comentar
         </button>
       </div>
