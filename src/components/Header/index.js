@@ -155,9 +155,6 @@ function Header() {
 					</ul>
 				</div>
 			</div>
-
-
-
 		</header>
 	);
 }

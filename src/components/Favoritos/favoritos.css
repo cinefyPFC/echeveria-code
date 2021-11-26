@@ -2,9 +2,7 @@
 img.listaFavoritosImagem {
   max-width: 350px;
 }
-.listaFavoritosID{
-  display: none;
-}
+
 li.listaFavoritos {
   text-align: center;
   margin: 10px 36px;

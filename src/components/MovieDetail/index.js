@@ -21,6 +21,7 @@ function MovieDetail(props) {
   const [genres, setGenres] = useState();
 
   useEffect(() => {
+    console.log(id); //mandar pro back
     medias[media].detail(id).then((r) => {
       setMovie(r.data);
       document.title = r.data.title ? r.data.title : r.data.name;
@@ -169,6 +170,15 @@ function MovieDetail(props) {
     localStorage.setItem('filmes', JSON.stringify(filmesSalvos));
     console.log('Filme salvo com sucesso!');
   }
+  function validar() {
+    let nota = document.getElementById('nota').value;
+    if (nota.length > 1) {
+    }
+    console.log(nota);
+  }
+  function idfilme() {
+    console.log('id filme: ' + movie.id);
+  }
 
   if (!movie.title && !movie.name) {
     return <span>Loading</span>;
@@ -255,29 +265,39 @@ function MovieDetail(props) {
               class="radio-custom-label gostei"
               value="gostei"
             >
-              <input id="gostei" name="radio-group" type="radio" />
+              <input
+                id="gostei"
+                name="radio-group"
+                type="radio"
+                value="TRUE" //BOOLEAN
+              />
               <AiFillLike />
             </label>
           </div>
           <div className="radio-image">
-            <label
-              for="naogostei"
-              class="radio-custom-label naogostei"
-              value="naogostei"
-            >
-              <input id="naogostei" name="radio-group" type="radio" />
+            <label for="naogostei" class="radio-custom-label naogostei">
+              <input
+                id="naogostei"
+                name="radio-group"
+                type="radio"
+                value="FALSO" //BOOLEAN
+              />
               <AiFillDislike />
             </label>
           </div>
 
           <div className="nota">
             <label
-              for="umestrela"
+              for="nota"
               class="radio-custom-label umestrela"
               value="umestrela"
             >
-              <input type="number" min="0" max="5"/>
-
+              <input
+                id="nota"
+                onBlurCapture={validar}
+                className="inputNota"
+                type="number"
+              />
             </label>
           </div>
         </div>
@@ -289,7 +309,9 @@ function MovieDetail(props) {
         ></textarea>
       </div>
       <div className="movie-coments-button">
-        <button className="button-coments">Comentar</button>
+        <button className="button-coments" onLoad={idfilme} onClick={function mandarComentario(){console.log('ARRUMAR AQUII')}}>
+          Comentar
+        </button>
       </div>
     </div>
   );
