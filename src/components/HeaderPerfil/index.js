@@ -50,7 +50,7 @@ function HeaderPerfil() {
         <div className="search">
           <input type="text" value={search} onChange={handleChange} placeholder="Buscar usuário" autoComplete="off" />
           <div className="search-result">
-            {}
+            {results}
           </div>
         </div>
 
@@ -69,28 +69,5 @@ function HeaderPerfil() {
     </header>
   );
 }
-
-
-// function renderResults(r) {
-//   console.log(r)
-//   return (
-//     r.slice(0, 10).map(r => {
-//       return <div key={r.id} onClick={() => { document.getElementsByClassName('search-result')[0].style.display = 'none' }}>
-//         <Link to={`/Usuario/${r.id}`}>
-//           <div className='search-image'>
-//             {/* <img src={API.image(r.logo_path, 'w200')} alt="Produtoras" /> */}
-//           </div>
-
-//           <div className="search-content">
-//             <div className="search-name">
-//               {r}
-//             </div>
-//           </div>
-//         </Link>
-//       </div>
-//     })
-//   )
-// }
-
 
 export default HeaderPerfil;

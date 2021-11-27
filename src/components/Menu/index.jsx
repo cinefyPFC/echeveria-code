@@ -8,7 +8,7 @@ const Menu = () => {
   return (
     <div>
       <Navbar className="menu-index" expand="md">
-        <NavbarBrand href="/"><img className="img-logo" src={imgLogo} /></NavbarBrand>
+        <NavbarBrand href="/"><img className="img-logo" src={imgLogo} alt='LogoCinefy' /></NavbarBrand>
           <Nav className="ml-auto" navbar>
 
             <NavItem>

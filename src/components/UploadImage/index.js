@@ -54,7 +54,7 @@ class UploadImage extends Component {
     return (
       <div>
         {/* image preview */}
-        <img className="img-preview" src={this.state.image_preview} />
+        <img className="img-preview" src={this.state.image_preview} alt="imagem usuario"/>
 
         {/* image input field */}
         <div className="img-arquivo-div">

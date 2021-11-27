@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import API from '../../services/tmdb.js';
 import { toast } from 'react-toastify';
 import './favoritos.css';
-import Header from '../Header/index';
 
 export default function Favoritos() {
   const [movie, setMovie] = useState([]);

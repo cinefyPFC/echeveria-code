@@ -8,6 +8,7 @@ function Login() {
   let history = useHistory();
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const notificarFalha = (error) => {
     toast.error(`${error.response.data.erro}`, {
@@ -23,7 +24,7 @@ function Login() {
 
   const notificarSucessoLogin = (response) => {
     toast.success(
-      `Usuario ${response.data.usuario.apelido} logado com sucesso!`,
+      `Usuario administrativo logado com sucesso!`,
       {
         position: 'top-right',
         onClose: () => completarLogin(response.data),
@@ -39,7 +40,7 @@ function Login() {
 
   const completarLogin = (response) => {
     sessionStorage.setItem('token', response.token);
-    history.push('/perfil');
+    history.push('/dash');
   };
 
   return (
@@ -70,7 +71,7 @@ function Login() {
             />
             <label>Senha</label>
           </div>
-          <Link to="#" className="btnAdmin" onClick={console.log('Logou')}>
+          <Link to="#" className="btnAdmin" onClick={loginAdmin}>
             <span></span>
             <span></span>
             <span></span>
@@ -87,6 +88,7 @@ function Login() {
       .post('sessions', {
         email: email,
         senha: senha,
+        isAdmin: isAdmin,
       })
       .then(function (response) {
         notificarSucessoLogin(response);
@@ -97,6 +99,7 @@ function Login() {
       });
     setEmail('');
     setSenha('');
+    setIsAdmin('');
   }
 }
 export default Login;

@@ -95,7 +95,7 @@ function Login() {
   // }
 
   async function loginUsuario() {
-    if (email != /^[^\s@]+@[^\s@]+$/) {
+    if (email !== /^[^\s@]+@[^\s@]+$/) {
       await api
         .post('sessions', {
           apelido: email,

@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
 import HeaderAdmin from '../../components/HeaderAdmin';
-import {
-  Table,
-  Button,
-  Modal,
-  ModalBody,
-} from 'reactstrap';
+import { Table, Button, Modal, ModalBody } from 'reactstrap';
 import './gerenciamento.css';
 import { FiUserX } from 'react-icons/fi';
 
 function Gerenciarusuario() {
   const [modal, setModal] = useState(false);
-
   // Toggle for Modal
   const toggle = () => setModal(!modal);
   return (
@@ -44,10 +38,21 @@ function Gerenciarusuario() {
                   modalTransition={{ timeout: 500 }}
                 >
                   <ModalBody>Deseja excluir o usuário?</ModalBody>
-                  <Button  onClick={function noRefCheck() {console.log("excluido")}}>
+                  <Button
+                    onClick={function noRefCheck() {
+                      console.log('excluido');
+                    }}
+                  >
                     Excluir
                   </Button>
-                  <Button color="primary" onClick={function noRefCheck() {console.log("cancelado")}}>Cancelar</Button>
+                  <Button
+                    color="primary"
+                    onClick={function noRefCheck() {
+                      console.log('cancelado');
+                    }}
+                  >
+                    Cancelar
+                  </Button>
                 </Modal>
               </td>
             </tr>

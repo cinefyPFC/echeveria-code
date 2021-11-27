@@ -170,12 +170,7 @@ function MovieDetail(props) {
     localStorage.setItem('filmes', JSON.stringify(filmesSalvos));
     console.log('Filme salvo com sucesso!');
   }
-  function validar() {
-    let nota = document.getElementById('nota').value;
-    if (nota.length > 1) {
-    }
-    console.log(nota);
-  }
+
   function idfilme() {
     console.log('id filme: ' + movie.id);
   }
@@ -248,8 +243,7 @@ function MovieDetail(props) {
         <div className="movie-user-coments">
           <h4 className="user-coments=name">Fanta Sabor original</h4>
           <p className="user-coments">
-            {' '}
-            // user-resenha Lorem Ipsum is simply dummy text of the printing and
+            Lorem Ipsum is simply dummy text of the printing and
             typesetting industry. Lorem Ipsum has been the industry's standard
             dummy text ever since the 1500s, when an unknown printer took a
             galley of type and scrambled it to make a type specimen book. It has
