@@ -6,6 +6,8 @@ import Cadastro from '../views/Cadastro';
 import Erro from '../views/Error';
 import Index from '../views/Home';
 import Login from '../views/Login';
+import recuperarSenha from '../views/EsqueciSenha';
+import novaSenha from '../views/Novasenha';
 import Admin from '../views/Dashboard';
 import Dashboard from '../views/Dashboard/Profile';
 import gerenciarUsuario from '../components/GerenciamentoUsuario';
@@ -29,6 +31,8 @@ function Routes() {
         <Switch>
           <Route exact path="/" component={Index} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/recuperarsenha" component={recuperarSenha} />
+          <Route exact path="/novasenha" component={novaSenha} />
           <Route exact path="/cadastro" component={Cadastro} />
           <Route exact path="/admin" component={Admin} />
           <Route exact path="/dash" component={Dashboard} />

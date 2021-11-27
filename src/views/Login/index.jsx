@@ -85,6 +85,7 @@ function Login() {
             Cadastrar
           </Link>
         </form>
+        <Link to="/recuperarsenha">Recuperar senha</Link>
       </div>
     </div>
   );
