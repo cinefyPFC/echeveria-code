@@ -7,6 +7,7 @@ import api from '../../services/api';
 import onClickCancelar from './javascript/cancelar';
 import onClickEditar from './javascript/editar';
 import './style/perfil.css';
+import { useHistory } from 'react-router-dom';
 
 function Profile() {
   const [usuario, setUsuario] = useState([]);
@@ -16,6 +17,7 @@ function Profile() {
   const [senha, setSenha] = useState('');
   const [dtNascimento, setDtnascimento] = useState('');
   const [genero, setGenero] = useState('');
+  let history = useHistory();
 
   const data = new FormData();
 
@@ -51,6 +53,7 @@ function Profile() {
   }
   function onClickSalvar() {
     console.log('Alteração feita com sucesso');
+
   }
 
   useEffect(() => {
@@ -75,141 +78,154 @@ function Profile() {
     }
     getUsers();
   }, []);
+  if (sessionStorage.getItem('token') == null) {
+    history.push('/');
+    console.log("retorno");
+    return(
+      <div>não possui permissão</div>
+    )
+  } else {
+    return (
+      <div>
+        <HeaderPerfil />
+        <div
+          className="page-content page-profile-user page-container"
+          id="page-content"
+        >
+          <div className="padding">
+            <Row>
+              <Col xl={12} md={12}>
+                <div className="card user-card-full">
+                  <Row className="rowInfoUsario">
+                    <Col sm={4} className="bg-uf user-profile">
+                      <div className="card-block text-center text-white">
+                        <p className="text-center personagem-favorito">
+                          {usuario.apelido}
+                        </p>
+                        <UploadImage />
+                      </div>
+                    </Col>
 
-  return (
-    <div>
-      <HeaderPerfil />
-      <div
-        className="page-content page-profile-user page-container"
-        id="page-content"
-      >
-        <div className="padding">
-          <Row>
-            <Col xl={12} md={12}>
-              <div className="card user-card-full">
-                <Row className="rowInfoUsario">
-                  <Col sm={4} className="bg-uf user-profile">
-                    <div className="card-block text-center text-white">
-                      <p className="text-center personagem-favorito">
-                        {usuario.apelido}
-                      </p>
-                      <UploadImage />
-                    </div>
-                  </Col>
+                    <Col sm={8} className="conteudo-usuario">
+                      <div className="card-block">
+                        <p className="info-user">Informações</p>
+                        <Row>
+                          <Col sm={6}>
+                            <p className="info-user">Apelido</p>
+                            <div className="hiddeninfo" id="hiddeninfoapelido">
+                              <p className="text-muted info-database">
+                                {usuario.apelido}
+                              </p>
+                            </div>
+                            <div
+                              id="initialinputapelido"
+                              className="inputhidden"
+                            >
+                              <input
+                                className="editInputStyle"
+                                type="text"
+                                name="apelido"
+                                pattern="[^\0]"
+                                required=""
+                                value={apelido}
+                                onChange={(e) => setApelido(e.target.value)}
+                              />
+                            </div>
+                          </Col>
+                          <Col sm={6}>
+                            <p className="info-user">Email</p>
+                            <div className="hiddeninfo" id="hiddeninfoemail">
+                              <p className="text-muted info-database">
+                                {usuario.email}
+                              </p>
+                            </div>
+                            <div id="initialinputemail" className="inputhidden">
+                              <input
+                                className="editInputStyle"
+                                type="text"
+                                pattern="/^[^\s@]+@[^\s@]+$/"
+                                name=""
+                                required=""
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                              />
+                            </div>
+                          </Col>
+                          <Col sm={6}>
+                            <p className="info-user">Data de Nascimento</p>
+                            <div
+                              className="hiddeninfo"
+                              id="hiddeninfodtnascimento"
+                            >
+                              <p className="text-muted info-database">
+                                {usuario.dtNascimento}
+                              </p>
+                            </div>
+                            <div
+                              id="initialinputdtnascimento"
+                              className="inputhidden"
+                            >
+                              <input
+                                className="editInputStyle"
+                                type="Date"
+                                name=""
+                                placeholder="Data Nascimento"
+                                date-format="MM DD YYYY"
+                                max="2019-12-31"
+                                maxLength="8"
+                                required="Digite sua data de nascimento"
+                                value={dtNascimento}
+                                onChange={(e) =>
+                                  setDtnascimento(e.target.value)
+                                }
+                              />
+                            </div>
+                          </Col>
+                          <Col sm={6}>
+                            <p className="info-user">Senha</p>
+                            <div className="hiddeninfo" id="hiddeninfosenha">
+                              <p className="text-muted info-database">
+                                *************
+                              </p>
+                            </div>
+                            <div id="initialinputsenha" className="inputhidden">
+                              <input
+                                className="editInputStyle"
+                                type="password"
+                                pattern="[^\0]"
+                                name="password"
+                                required="Digite a senha"
+                                value={senha}
+                                onChange={(e) => setSenha(e.target.value)}
+                              />
+                            </div>
+                          </Col>
+                          <Col sm={6}>
+                            <p className="info-user">Gênero</p>
+                            <div className="hiddeninfo" id="hiddeninfogenero">
+                              <p className="text-muted info-database">
+                                {usuario.genero}
+                              </p>
+                            </div>
+                            <div
+                              id="initialinputgenero"
+                              className="inputhidden"
+                            >
+                              <input
+                                className="editInputStyle"
+                                type="text"
+                                pattern="[^\0]"
+                                name="genero"
+                                value={genero}
+                                onChange={(e) => setGenero(e.target.value)}
+                              />
+                            </div>
+                          </Col>
+                        </Row>
 
-                  <Col sm={8} className="conteudo-usuario">
-                    <div className="card-block">
-                      <p className="info-user">Informações</p>
-                      <Row>
-                        <Col sm={6}>
-                          <p className="info-user">Apelido</p>
-                          <div className="hiddeninfo" id="hiddeninfoapelido">
-                            <p className="text-muted info-database">
-                              {usuario.apelido}
-                            </p>
-                          </div>
-                          <div id="initialinputapelido" className="inputhidden">
-                            <input
-                              className="editInputStyle"
-                              type="text"
-                              name="apelido"
-                              pattern="[^\0]"
-                              required=""
-                              value={apelido}
-                              onChange={(e) => setApelido(e.target.value)}
-                            />
-                          </div>
-                        </Col>
-                        <Col sm={6}>
-                          <p className="info-user">Email</p>
-                          <div className="hiddeninfo" id="hiddeninfoemail">
-                            <p className="text-muted info-database">
-                              {usuario.email}
-                            </p>
-                          </div>
-                          <div id="initialinputemail" className="inputhidden">
-                            <input
-                              className="editInputStyle"
-                              type="text"
-                              pattern="/^[^\s@]+@[^\s@]+$/"
-                              name=""
-                              required=""
-                              value={email}
-                              onChange={(e) => setEmail(e.target.value)}
-                            />
-                          </div>
-                        </Col>
-                        <Col sm={6}>
-                          <p className="info-user">Data de Nascimento</p>
-                          <div
-                            className="hiddeninfo"
-                            id="hiddeninfodtnascimento"
-                          >
-                            <p className="text-muted info-database">
-                              {usuario.dtNascimento}
-                            </p>
-                          </div>
-                          <div
-                            id="initialinputdtnascimento"
-                            className="inputhidden"
-                          >
-                            <input
-                              className="editInputStyle"
-                              type="Date"
-                              name=""
-                              placeholder="Data Nascimento"
-                              date-format="MM DD YYYY"
-                              max="2019-12-31"
-                              maxLength="8"
-                              required="Digite sua data de nascimento"
-                              value={dtNascimento}
-                              onChange={(e) => setDtnascimento(e.target.value)}
-                            />
-                          </div>
-                        </Col>
-                        <Col sm={6}>
-                          <p className="info-user">Senha</p>
-                          <div className="hiddeninfo" id="hiddeninfosenha">
-                            <p className="text-muted info-database">
-                              *************
-                            </p>
-                          </div>
-                          <div id="initialinputsenha" className="inputhidden">
-                            <input
-                              className="editInputStyle"
-                              type="password"
-                              pattern="[^\0]"
-                              name="password"
-                              required="Digite a senha"
-                              value={senha}
-                              onChange={(e) => setSenha(e.target.value)}
-                            />
-                          </div>
-                        </Col>
-                        <Col sm={6}>
-                          <p className="info-user">Genero</p>
-                          <div className="hiddeninfo" id="hiddeninfogenero">
-                            <p className="text-muted info-database">
-                              {usuario.genero}
-                            </p>
-                          </div>
-                          <div id="initialinputgenero" className="inputhidden">
-                            <input
-                              className="editInputStyle"
-                              type="text"
-                              pattern="[^\0]"
-                              name="genero"
-                              value={genero}
-                              onChange={(e) => setGenero(e.target.value)}
-                            />
-                          </div>
-                        </Col>
-                      </Row>
-
-                      <Row className="buttonsPerfil">
-                        <Col className="btnProfileAlt" md={12} sm={12}>
-                          <div className="alinhamentoBotao">
-                            <div md={4}>
+                        <Row className="buttonsPerfil">
+                          <Col className="btnProfileAlt" md={12} sm={12}>
+                            <div className="alinhamentoBotao">
                               <Button
                                 outline
                                 color="warning"
@@ -231,8 +247,7 @@ function Profile() {
                               >
                                 Cancelar
                               </Button>
-                            </div>
-                            <div md={4}>
+
                               <Button
                                 outline
                                 color="success"
@@ -243,8 +258,7 @@ function Profile() {
                               >
                                 Salvar
                               </Button>
-                            </div>
-                            <div md={4}>
+
                               <Button
                                 outline
                                 color="danger"
@@ -256,19 +270,19 @@ function Profile() {
                                 Excluir
                               </Button>
                             </div>
-                          </div>
-                        </Col>
-                      </Row>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-            </Col>
-          </Row>
+                          </Col>
+                        </Row>
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              </Col>
+            </Row>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Profile;

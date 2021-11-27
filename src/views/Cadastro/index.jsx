@@ -6,7 +6,6 @@ import api from '../../services/api';
 // import ImageUploader from 'react-images-upload';
 import './style/cadastro.css';
 
-
 function Cadastro() {
   let history = useHistory();
   const [apelido, setApelido] = useState('');
@@ -16,7 +15,6 @@ function Cadastro() {
   const [emailSecundario, setEmailSecundario] = useState('');
   const [dtNascimento, setDtnascimento] = useState('');
   const [genero, setGenero] = useState('');
-
 
   const notificarSucessoCadastro = (response) => {
     toast.success(
@@ -37,10 +35,11 @@ function Cadastro() {
     sessionStorage.setItem('token', response.token);
     history.push('/perfil');
   };
+
   const notificarFalha = (error) => {
     toast.error(`${error.response.data.erro}`, {
       position: 'top-right',
-      autoClose: 5000,
+      autoClose: 1500,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -99,9 +98,9 @@ function Cadastro() {
               value={emailSecundario}
               onChange={(e) => setEmailSecundario(e.target.value)}
             />
-
             <label>Email Secundário</label>
           </div>
+
           <div className="user-box">
             <input
               type="text"
@@ -111,7 +110,6 @@ function Cadastro() {
               value={genero}
               onChange={(e) => setGenero(e.target.value)}
             />
-
             <label>Gênero Cinematográfico</label>
           </div>
 
@@ -141,7 +139,6 @@ function Cadastro() {
             />
           </div>
 
-
           <Link to="/login">
             <span></span>
             <span></span>
@@ -149,6 +146,7 @@ function Cadastro() {
             <span></span>
             Entrar
           </Link>
+
           <Link to="#" className="btnCadastrar" onClick={novoUsuario}>
             <span></span>
             <span></span>
@@ -171,7 +169,7 @@ function Cadastro() {
         personagemFav: personagem,
         emailSecundario: emailSecundario,
         dtNascimento: dtNascimento,
-
+        genero: genero,
       })
       .then(function (response) {
         notificarSucessoCadastro(response);
@@ -180,8 +178,6 @@ function Cadastro() {
         console.log('Opa aconteceu esse erro aqui!', error.toJSON());
         notificarFalha(error);
       });
-
-
   }
 }
 
