@@ -15,7 +15,8 @@ function Cadastro() {
   const [personagem, setPersonagem] = useState('');
   const [emailSecundario, setEmailSecundario] = useState('');
   const [dtNascimento, setDtnascimento] = useState('');
-  const [avatar, setAvatar] = useState('');
+  const [genero, setGenero] = useState('');
+
 
   const notificarSucessoCadastro = (response) => {
     toast.success(
@@ -101,13 +102,25 @@ function Cadastro() {
 
             <label>Email Secundário</label>
           </div>
+          <div className="user-box">
+            <input
+              type="text"
+              pattern="/^[^\s@]+@[^\s@]+$/"
+              name=""
+              required=""
+              value={genero}
+              onChange={(e) => setGenero(e.target.value)}
+            />
+
+            <label>Gênero Cinematográfico</label>
+          </div>
 
           <div className="user-box">
             <input
               type="password"
               pattern="[^\0]"
               name="password"
-              required="Digite a senha"
+              required=""
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
             />
@@ -121,25 +134,13 @@ function Cadastro() {
               name=""
               placeholder="Data Nascimento"
               date-format="MM DD YYYY"
-              max="2019-12-31"
               maxLength="8"
               required="Digite sua data de nascimento"
               value={dtNascimento}
               onChange={(e) => setDtnascimento(e.target.value)}
             />
           </div>
-          <div className="user-box">
-            <input
-              id="upload"
-              name=""
-              type="file"
-              className="file-input"
-              accept="image/*"
-              value={avatar}
-              onChange={(e) => setAvatar(e.target.value)}
-            //onChange={(e)=> { this.readFile(e) }}
-            />
-          </div>
+
 
           <Link to="/login">
             <span></span>
