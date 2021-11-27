@@ -5,9 +5,11 @@ function onClickEditar() {
   document.getElementById('initialinputemail').style.display = 'initial';
   document.getElementById('initialinputdtnascimento').style.display = 'initial';
   document.getElementById('initialinputsenha').style.display = 'initial';
+  document.getElementById('initialinputgenero').style.display = 'initial';
   document.getElementById('hiddeninfoapelido').style.display = 'none';
   document.getElementById('hiddeninfoemail').style.display = 'none';
   document.getElementById('hiddeninfodtnascimento').style.display = 'none';
   document.getElementById('hiddeninfosenha').style.display = 'none';
+  document.getElementById('hiddeninfogenero').style.display = 'none';
 }
 export default onClickEditar;

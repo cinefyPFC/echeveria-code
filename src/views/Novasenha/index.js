@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 class atualizarSenha extends React.Component {
   componentDidMount() {
     let pegaToken = window.location.href;
-      pegaToken = pegaToken.replace("http://localhost:3000/novasenha?token=", "");
-      console.log(pegaToken);
+    pegaToken = pegaToken.replace('http://localhost:3000/novasenha?token=', '');
+    console.log(pegaToken);
   }
 
-render() {
+  render() {
     return (
       <div className="body">
         <div className="cadastro-box">
@@ -31,15 +31,7 @@ render() {
               <span></span>
               Atualizar Senha
             </Link>
-            <Link to="#" >
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              Token
-            </Link>
           </form>
-          <div id="demo"></div>
         </div>
       </div>
     );

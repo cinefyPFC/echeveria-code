@@ -15,6 +15,7 @@ function Profile() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [dtNascimento, setDtnascimento] = useState('');
+  const [genero, setGenero] = useState('');
 
   const data = new FormData();
 
@@ -182,6 +183,24 @@ function Profile() {
                               required="Digite a senha"
                               value={senha}
                               onChange={(e) => setSenha(e.target.value)}
+                            />
+                          </div>
+                        </Col>
+                        <Col sm={6}>
+                          <p className="info-user">Genero</p>
+                          <div className="hiddeninfo" id="hiddeninfogenero">
+                            <p className="text-muted info-database">
+                              {usuario.genero}
+                            </p>
+                          </div>
+                          <div id="initialinputgenero" className="inputhidden">
+                            <input
+                              className="editInputStyle"
+                              type="text"
+                              pattern="[^\0]"
+                              name="genero"
+                              value={genero}
+                              onChange={(e) => setGenero(e.target.value)}
                             />
                           </div>
                         </Col>
