@@ -45,6 +45,13 @@ function Profile() {
     uploadImage();
   };
 
+  function onClickExcluir() {
+    console.log('Usuário excluido');
+  }
+  function onClickSalvar() {
+    console.log('Alteração feita com sucesso');
+  }
+
   useEffect(() => {
     async function getUsers() {
       let token = sessionStorage.getItem('token');
@@ -67,7 +74,6 @@ function Profile() {
     }
     getUsers();
   }, []);
-
 
   return (
     <div>
@@ -142,7 +148,10 @@ function Profile() {
                               {usuario.dtNascimento}
                             </p>
                           </div>
-                          <div id="initialinputdtnascimento" className="inputhidden">
+                          <div
+                            id="initialinputdtnascimento"
+                            className="inputhidden"
+                          >
                             <input
                               className="editInputStyle"
                               type="Date"
@@ -177,74 +186,58 @@ function Profile() {
                           </div>
                         </Col>
                       </Row>
-                      <p className="f-w-800">Trailers</p>
-                      <Row>
-                        <Col sm={4}>
-                          <p className="info-user">Filme Favorito</p>
-                          <div className="hiddeninfo" id="hiddeninfofilme">
-                            <p className="text-muted info-database">
-                              Star Wars
-                            </p>
-                          </div>
-                          <div id="initialinputfilme" className="inputhidden">
-                            <input
-                              className="editInputStyle"
-                            />
-                          </div>
-                        </Col>
-                        <Col sm={4}>
-                          <p className="info-user">Série Favorita</p>
-                          <div className="hiddeninfo" id="hiddeninfoserie">
-                            <p className="text-muted info-database">
-                              Love Death and Robots
-                            </p>
-                          </div>
-                          <div id="initialinputserie" className="inputhidden">
-                            <input
-                              className="editInputStyle"
-                            />
-                          </div>
-                        </Col>
-                        <Col sm={4}>
-                          <p className="info-user">Documentário Favorito</p>
-                          <div className="hiddeninfo" id="hiddeninfodocumentario">
-                            <p className="text-muted info-database">
-                              A 13ª Emenda
-                            </p>
-                          </div>
-                          <div id="initialinputdocumentario" className="inputhidden">
-                            <input
-                              className="editInputStyle"
-                            />
-                          </div>
-                        </Col>
-                      </Row>
+
                       <Row className="buttonsPerfil">
                         <Col className="btnProfileAlt" md={12} sm={12}>
-                          <Button
-                            outline
-                            color="warning"
-                            id="Editar"
-                            name="Editar"
-                            value="Editar"
-                            onClick={onClickEditar}
-                          >
-                            Editar
-                          </Button>
-                          <Button
-                            outline
-                            color="danger"
-                            className="btnDanger"
-                            id="Cancelar"
-                            name="Editar"
-                            value="Editar"
-                            onClick={onClickCancelar}
-                          >
-                            Cancelar
-                          </Button>
-                          <Button outline color="success">
-                            Salvar
-                          </Button>
+                          <div className="alinhamentoBotao">
+                            <div md={4}>
+                              <Button
+                                outline
+                                color="warning"
+                                id="Editar"
+                                name="Editar"
+                                value="Editar"
+                                onClick={onClickEditar}
+                              >
+                                Editar
+                              </Button>
+                              <Button
+                                outline
+                                color="danger"
+                                className="btnDanger"
+                                id="Cancelar"
+                                name="Editar"
+                                value="Editar"
+                                onClick={onClickCancelar}
+                              >
+                                Cancelar
+                              </Button>
+                            </div>
+                            <div md={4}>
+                              <Button
+                                outline
+                                color="success"
+                                id="Salvar"
+                                name="Editar"
+                                value="Editar"
+                                onClick={onClickSalvar}
+                              >
+                                Salvar
+                              </Button>
+                            </div>
+                            <div md={4}>
+                              <Button
+                                outline
+                                color="danger"
+                                id="Excluir"
+                                name="Editar"
+                                value="Editar"
+                                onClick={onClickExcluir}
+                              >
+                                Excluir
+                              </Button>
+                            </div>
+                          </div>
                         </Col>
                       </Row>
                     </div>

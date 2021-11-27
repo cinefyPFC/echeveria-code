@@ -79,9 +79,7 @@ div#page-content {
   border-radius: 100px;
   margin: auto;
 }
-button.btn.btn-outline-success {
-  margin-left: 60%;
-}
+
 .icon-upload-foto {
   position: absolute;
   top: 80% !important;
@@ -95,9 +93,6 @@ button.btn.btn-outline-success {
     border-radius: 200px;
     width: 100px;
     display: inline;
-  }
-  button.btn.btn-outline-success {
-    margin-left: 50%;
   }
 }
 @media (max-width: 450px) {
