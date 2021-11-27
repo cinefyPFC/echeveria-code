@@ -8,7 +8,7 @@ function Login() {
   let history = useHistory();
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState('');
 
   const notificarFalha = (error) => {
     toast.error(`${error.response.data.erro}`, {
@@ -23,19 +23,16 @@ function Login() {
   };
 
   const notificarSucessoLogin = (response) => {
-    toast.success(
-      `Usuario administrativo logado com sucesso!`,
-      {
-        position: 'top-right',
-        onClose: () => completarLogin(response.data),
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      },
-    );
+    toast.success(`Usuario administrativo logado com sucesso!`, {
+      position: 'top-right',
+      onClose: () => completarLogin(response.data),
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   const completarLogin = (response) => {
@@ -43,6 +40,26 @@ function Login() {
     history.push('/dash');
   };
 
+  if(isAdmin == false){ console.log('Teste')}
+  async function loginAdmin() {
+    await api
+      .post('sessions', {
+        email: email,
+        senha: senha,
+        isAdmin: isAdmin,
+      })
+      .then(function (response) {
+        notificarSucessoLogin(response);
+        console.log(response);
+      })
+      .catch(function (error) {
+        notificarFalha(error);
+      });
+    setEmail('');
+    setSenha('');
+    setIsAdmin('');
+
+}
   return (
     <div className="body">
       <ToastContainer />
@@ -82,24 +99,5 @@ function Login() {
       </div>
     </div>
   );
-
-  async function loginAdmin() {
-    await api
-      .post('sessions', {
-        email: email,
-        senha: senha,
-        isAdmin: isAdmin,
-      })
-      .then(function (response) {
-        notificarSucessoLogin(response);
-        console.log(response);
-      })
-      .catch(function (error) {
-        notificarFalha(error);
-      });
-    setEmail('');
-    setSenha('');
-    setIsAdmin('');
-  }
 }
 export default Login;
