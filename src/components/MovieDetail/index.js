@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { AiFillDislike, AiFillLike, AiFillStar } from 'react-icons/ai';
 import { Link, useParams } from 'react-router-dom';
 import API from '../../services/tmdb';
 import Elenco from '../Elenco';
@@ -6,7 +7,6 @@ import MovieImages from '../MovieImages';
 import Section from '../Section';
 import imgUser from './img/images.png';
 import './style.css';
-import { AiFillLike, AiFillDislike, AiFillStar } from 'react-icons/ai';
 
 const medias = {
   tv: API.tv,
@@ -256,8 +256,8 @@ function MovieDetail(props) {
           <div className="avaliacacaoResenha">
             <div className="radio-image">
               <label
-                for="gostei"
-                class="radio-custom-label gostei"
+                htmlFor="gostei"
+                className="radio-custom-label gostei"
                 value="gostei"
               >
                 <input
@@ -268,7 +268,7 @@ function MovieDetail(props) {
                 />
                 <AiFillLike />
               </label>
-              <label for="naogostei" class="radio-custom-label naogostei">
+              <label htmlFor="naogostei" className="radio-custom-label naogostei">
                 <input
                   id="naogostei"
                   name="radio-group"
@@ -290,24 +290,24 @@ function MovieDetail(props) {
         </div>
         <div className="notaTitulo">
           <h4>Seleciona sua nota</h4>
-          <div class="estrelas">
-            <label for="cm_star-1" className="nota" title="nota 1">
+          <div className="estrelas">
+            <label htmlFor="cm_star-1" className="nota" title="nota 1">
               <input type="radio" id="cm_star-1" name="fb" value="1" />
               <AiFillStar />
             </label>
-            <label for="cm_star-2" className="nota" title="nota 2">
+            <label htmlFor="cm_star-2" className="nota" title="nota 2">
               <input type="radio" id="cm_star-2" name="fb" value="2" />
               <AiFillStar />
             </label>
-            <label for="cm_star-3" className="nota" title="nota 3">
+            <label htmlFor="cm_star-3" className="nota" title="nota 3">
               <input type="radio" id="cm_star-3" name="fb" value="3" />
               <AiFillStar />
             </label>
-            <label for="cm_star-4" className="nota" title="nota 4">
+            <label htmlFor="cm_star-4" className="nota" title="nota 4">
               <input type="radio" id="cm_star-4" name="fb" value="4" />
               <AiFillStar />
             </label>
-            <label for="cm_star-5" className="nota" title="nota 5">
+            <label htmlFor="cm_star-5" className="nota" title="nota 5">
               <input type="radio" id="cm_star-5" name="fb" value="5" />
               <AiFillStar />
             </label>
