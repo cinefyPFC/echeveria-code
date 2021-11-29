@@ -1,14 +1,38 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiUserX } from 'react-icons/fi';
 import { Button, Modal, ModalBody, Table } from 'reactstrap';
 import HeaderAdmin from '../../components/HeaderAdmin';
+import api from '../../services/api';
 import './gerenciamento.css';
 
 function Gerenciarusuario() {
   const [modal, setModal] = useState(false);
   // Toggle for Modal
   const toggle = () => setModal(!modal);
+
+  useEffect(() => {
+    async function getUsers() {
+      let token = sessionStorage.getItem('token');
+      await api
+        .get('users/', {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(function (response) {
+          console.log('Boa!', response.data);
+          // setUsuario(response.data);
+          // setAvatar(response.data.avatar.url);
+          // console.log('Usuario!', usuario);
+        })
+        .catch(function (error) {
+          console.log('Opa aconteceu esse erro aqui!', error);
+        });
+    }
+    getUsers();
+  }, []);
   return (
     <div className="AdminTela">
       <HeaderAdmin></HeaderAdmin>
@@ -41,14 +65,16 @@ function Gerenciarusuario() {
                   <ModalBody>Deseja excluir o usuário?</ModalBody>
                   <Button
                     onClick={function noRefCheck() {
+                      let token = sessionStorage.getItem('token');
                       const options = {
+
                         method: 'DELETE',
                         url: 'http://localhost:3333/admin/delete/user',
                         headers: {
                           'Content-Type': 'application/json',
-                          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjM4MTQ4NjU1LCJleHAiOjE2Mzg3NTM0NTV9.cawn4jh0b143SZmKrAX9bdTDju80SlvXi9G46KTktZ4'
+                          Authorization: `Bearer ${token}`,
                         },
-                        data: { apelido: 'guilherme3' }
+                        data: { apelido: `${Usuario}` }
                       };
 
                       axios.request(options).then(function (response) {

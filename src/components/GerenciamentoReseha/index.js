@@ -1,13 +1,39 @@
-import React, { useState } from 'react';
-import HeaderAdmin from '../../components/HeaderAdmin';
-import { Table, Button, Modal, ModalBody } from 'reactstrap';
+import axios from "axios";
+import React, { useEffect, useState } from 'react';
 import { FiUserX } from 'react-icons/fi';
+import { Button, Modal, ModalBody, Table } from 'reactstrap';
+import HeaderAdmin from '../../components/HeaderAdmin';
+import api from '../../services/api';
+
+
 
 function Gerenciarresenha() {
   const [modal, setModal] = useState(false);
 
   // Toggle for Modal
   const toggle = () => setModal(!modal);
+  useEffect(() => {
+    async function getUsers() {
+      let token = sessionStorage.getItem('token');
+      await api
+        .get('review', {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(function (response) {
+          console.log('Boa!', response.data);
+          // setUsuario(response.data);
+          // setAvatar(response.data.avatar.url);
+          // console.log('Usuario!', usuario);
+        })
+        .catch(function (error) {
+          console.log('Opa aconteceu esse erro aqui!', error);
+        });
+    }
+    getUsers();
+  }, []);
   return (
     <div className="AdminTela">
       <HeaderAdmin></HeaderAdmin>
@@ -52,6 +78,22 @@ function Gerenciarresenha() {
                   <Button
                     onClick={function noRefCheck() {
                       console.log('excluido');
+                      let token = sessionStorage.getItem('token');
+                      const options = {
+                        method: 'DELETE',
+                        url: 'http://localhost:3333/admin/delete/review',
+                        headers: {
+                          'Content-Type': 'application/json',
+                          Authorization: `Bearer ${token}`,
+                        },
+                        data: { id: `${idResenha}` }
+                      };
+
+                      axios.request(options).then(function (response) {
+                        console.log(response.data);
+                      }).catch(function (error) {
+                        console.error(error);
+                      });
                     }}
                   >
                     Excluir
