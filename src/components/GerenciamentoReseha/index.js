@@ -86,7 +86,7 @@ function Gerenciarresenha() {
                           'Content-Type': 'application/json',
                           Authorization: `Bearer ${token}`,
                         },
-                        data: { id: `${idResenha}` }
+                        // data: { id: `${idResenha}` }
                       };
 
                       axios.request(options).then(function (response) {

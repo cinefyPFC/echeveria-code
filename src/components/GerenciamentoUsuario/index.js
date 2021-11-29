@@ -74,7 +74,7 @@ function Gerenciarusuario() {
                           'Content-Type': 'application/json',
                           Authorization: `Bearer ${token}`,
                         },
-                        data: { apelido: `${Usuario}` }
+                        // data: { apelido: `${Usuario}` }
                       };
 
                       axios.request(options).then(function (response) {

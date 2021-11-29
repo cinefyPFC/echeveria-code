@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { AiFillDislike, AiFillLike, AiFillStar } from 'react-icons/ai';
 import { Link, useParams } from 'react-router-dom';
@@ -19,6 +20,10 @@ function MovieDetail(props) {
   const [cast, setCast] = useState([]);
   const [director, setDirector] = useState([]);
   const [genres, setGenres] = useState();
+  const [titulo, setTitulo] = useState('');
+  const [corpo, setCorpo] = useState('');
+  const [nota, setNota] = useState('');
+  const [veredito, setVeredito] = useState('');
 
   useEffect(() => {
     console.log(id); //mandar pro back
@@ -47,7 +52,8 @@ function MovieDetail(props) {
     });
   }, [id, media]);
 
-  function renderFristActors() {
+  function renderFirstActors() {
+    console.log('PQ Q EU TO TRIGANDO TODA HORA?')
     return cast.slice(0, 4).map((a) => {
       return (
         <Link key={a.id} to={`/person/${a.id}`}>
@@ -178,6 +184,7 @@ function MovieDetail(props) {
   if (!movie.title && !movie.name) {
     return <span>Loading</span>;
   }
+
   return (
     <div>
       <div className="movie">
@@ -213,7 +220,7 @@ function MovieDetail(props) {
               {renderDirectors()}
             </div>
 
-            <div className="movie-actors">Elenco: {renderFristActors()}</div>
+            <div className="movie-actors">Elenco: {renderFirstActors()}</div>
 
             <div className="movie-companies">
               Estúdio: {renderCompanies(movie.production_companies)}
@@ -264,7 +271,8 @@ function MovieDetail(props) {
                   id="gostei"
                   name="radio-group"
                   type="radio"
-                  value="TRUE" //BOOLEAN
+                  value="true" //BOOLEAN
+                  onChange={(e) => setVeredito(e.target.value)}
                 />
                 <AiFillLike />
               </label>
@@ -273,7 +281,8 @@ function MovieDetail(props) {
                   id="naogostei"
                   name="radio-group"
                   type="radio"
-                  value="FALSO" //BOOLEAN
+                  value="false" //BOOLEAN
+                  onChange={(e) => setVeredito(e.target.value)}
                 />
                 <AiFillDislike />
               </label>
@@ -282,33 +291,44 @@ function MovieDetail(props) {
         </div>
       </div>
       <div className="notaResenha">
+        <input
+          className="editInputStyle"
+          type="text"
+          name="titulo"
+          pattern="[^\0]"
+          required=""
+          value={titulo}
+          onChange={(e) => setTitulo(e.target.value)}
+        />
         <div className="movie-coments">
           <textarea
             className="text-area-movie-coments"
             placeholder="Digite sua opinião sobre o filme"
+            value={corpo}
+            onChange={(e) => setCorpo(e.target.value)}
           ></textarea>
         </div>
         <div className="notaTitulo">
           <h4>Seleciona sua nota</h4>
           <div className="estrelas">
             <label htmlFor="cm_star-1" className="nota" title="nota 1">
-              <input type="radio" id="cm_star-1" name="fb" value="1" />
+              <input type="radio" id="cm_star-1" name="fb" value="1" onChange={(e) => setNota(e.target.value)} />
               <AiFillStar />
             </label>
             <label htmlFor="cm_star-2" className="nota" title="nota 2">
-              <input type="radio" id="cm_star-2" name="fb" value="2" />
+              <input type="radio" id="cm_star-2" name="fb" value="2" onChange={(e) => setNota(e.target.value)} />
               <AiFillStar />
             </label>
             <label htmlFor="cm_star-3" className="nota" title="nota 3">
-              <input type="radio" id="cm_star-3" name="fb" value="3" />
+              <input type="radio" id="cm_star-3" name="fb" value="3" onChange={(e) => setNota(e.target.value)} />
               <AiFillStar />
             </label>
             <label htmlFor="cm_star-4" className="nota" title="nota 4">
-              <input type="radio" id="cm_star-4" name="fb" value="4" />
+              <input type="radio" id="cm_star-4" name="fb" value="4" onChange={(e) => setNota(e.target.value)} />
               <AiFillStar />
             </label>
             <label htmlFor="cm_star-5" className="nota" title="nota 5">
-              <input type="radio" id="cm_star-5" name="fb" value="5" />
+              <input type="radio" id="cm_star-5" name="fb" value="5" onChange={(e) => setNota(e.target.value)} />
               <AiFillStar />
             </label>
           </div>
@@ -318,15 +338,39 @@ function MovieDetail(props) {
         <button
           className="button-coments"
           onLoad={idfilme}
-          onClick={function mandarComentario() {
-            console.log('ARRUMAR AQUII');
-          }}
+          onClick={novaResenha}
         >
           Comentar
         </button>
       </div>
     </div>
   );
+  async function novaResenha() {
+    let token = sessionStorage.getItem('token')
+    const options = {
+      method: 'POST',
+      url: 'http://localhost:3333/review',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      data: {
+        titulo: titulo,
+        corpo: corpo,
+        nota: nota,
+        veredito: veredito,
+        tmdbId: movie.id.toString(),
+      }
+    };
+    await axios.request(options)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log('Opa aconteceu esse erro aqui!', error);
+        console.log(error);
+      });
+  }
 }
 
 export default MovieDetail;
