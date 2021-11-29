@@ -1,8 +1,9 @@
+import axios from 'axios';
 import React, { useState } from 'react';
-import HeaderAdmin from '../../components/HeaderAdmin';
-import { Table, Button, Modal, ModalBody } from 'reactstrap';
-import './gerenciamento.css';
 import { FiUserX } from 'react-icons/fi';
+import { Button, Modal, ModalBody, Table } from 'reactstrap';
+import HeaderAdmin from '../../components/HeaderAdmin';
+import './gerenciamento.css';
 
 function Gerenciarusuario() {
   const [modal, setModal] = useState(false);
@@ -40,7 +41,21 @@ function Gerenciarusuario() {
                   <ModalBody>Deseja excluir o usuário?</ModalBody>
                   <Button
                     onClick={function noRefCheck() {
-                      console.log('excluido');
+                      const options = {
+                        method: 'DELETE',
+                        url: 'http://localhost:3333/admin/delete/user',
+                        headers: {
+                          'Content-Type': 'application/json',
+                          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjM4MTQ4NjU1LCJleHAiOjE2Mzg3NTM0NTV9.cawn4jh0b143SZmKrAX9bdTDju80SlvXi9G46KTktZ4'
+                        },
+                        data: { apelido: 'guilherme3' }
+                      };
+
+                      axios.request(options).then(function (response) {
+                        console.log(response.data);
+                      }).catch(function (error) {
+                        console.error(error);
+                      });
                     }}
                   >
                     Excluir

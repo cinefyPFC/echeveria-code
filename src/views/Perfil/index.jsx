@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { Button, Col, Row } from 'reactstrap';
 import HeaderPerfil from '../../components/HeaderPerfil';
@@ -7,7 +8,6 @@ import api from '../../services/api';
 import onClickCancelar from './javascript/cancelar';
 import onClickEditar from './javascript/editar';
 import './style/perfil.css';
-import { useHistory } from 'react-router-dom';
 
 function Profile() {
   const [usuario, setUsuario] = useState([]);
@@ -23,30 +23,6 @@ function Profile() {
 
   const handleUploadFile = (e) => setAvatar(e.target.files[0]);
 
-  const uploadImage = async () => {
-    data.append('arquivo', '/home/guilherme/Pictures/pika.jpeg');
-    let token = sessionStorage.getItem('token');
-    await api;
-    await fetch('http://localhost:3333/files', {
-      method: 'POST',
-      headers: {
-        'Content-Type': `multipart/form-data; boundary=${avatar}`,
-        Authorization: `Bearer ${token}`,
-      },
-      body: data,
-    })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
-  const prepareImage = (e) => {
-    handleUploadFile(e);
-    uploadImage();
-  };
 
   function onClickExcluir() {
     console.log('Usuário excluido');
@@ -81,7 +57,7 @@ function Profile() {
   if (sessionStorage.getItem('token') == null) {
     history.push('/');
     console.log("retorno");
-    return(
+    return (
       <div>não possui permissão</div>
     )
   } else {
@@ -99,6 +75,12 @@ function Profile() {
                   <Row className="rowInfoUsario">
                     <Col sm={4} className="bg-uf user-profile">
                       <div className="card-block text-center text-white">
+                        <label htmlFor="uploadFile" className="control-label"><img
+                          src={avatar}
+                          alt="Imagem usuario"
+                          className="img-radius"
+                        /></label>
+
                         <p className="text-center personagem-favorito">
                           {usuario.apelido}
                         </p>

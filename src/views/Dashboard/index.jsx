@@ -8,7 +8,6 @@ function Login() {
   let history = useHistory();
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [isAdmin, setIsAdmin] = useState('');
 
   const notificarFalha = (error) => {
     toast.error(`${error.response.data.erro}`, {
