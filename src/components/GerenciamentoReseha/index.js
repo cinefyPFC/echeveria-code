@@ -9,31 +9,24 @@ import api from '../../services/api';
 
 function Gerenciarresenha() {
   const [modal, setModal] = useState(false);
-
-  // Toggle for Modal
   const toggle = () => setModal(!modal);
+  const [resenha, setResenhas] = useState([]);
+
   useEffect(() => {
-    async function getUsers() {
+    async function getResenha() {
       let token = sessionStorage.getItem('token');
-      await api
-        .get('review', {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(function (response) {
-          console.log('Boa!', response.data);
-          // setUsuario(response.data);
-          // setAvatar(response.data.avatar.url);
-          // console.log('Usuario!', usuario);
-        })
-        .catch(function (error) {
-          console.log('Opa aconteceu esse erro aqui!', error);
-        });
+      const response = await api.get("review", {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      console.log(response.data);
+      setResenhas(response.data);
     }
-    getUsers();
+    getResenha();
   }, []);
+
   return (
     <div className="AdminTela">
       <HeaderAdmin></HeaderAdmin>
@@ -42,29 +35,17 @@ function Gerenciarresenha() {
           <thead>
             <tr>
               <th>#</th>
-              <th>Apelido</th>
-              <th>Resenha</th>
+              <th>Titulo</th>
+              <th>Corpo</th>
               <th>Ações</th>
             </tr>
           </thead>
-          <tbody>
+          {resenha.map((resenha) => (
+          <tbody key={resenha.id}>
             <tr>
-              <th scope="row">1</th>
-              <td className="table-gerenciamento-usuario">Guilherme</td>
-              <td className="table-gerenciamento-usuario">
-                guilherme@alunos.umc.brguilherme@alunos.umc.br
-                guilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.br
-                guilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.br
-                guilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.br
-                guilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.br
-                guilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.br
-                guilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.br
-                guilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.br
-                guilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.br
-                guilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.br
-                guilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.br
-                guilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.brguilherme@alunos.umc.br
-              </td>
+            <th scope="row" >{resenha.id}</th>
+              <td className="table-gerenciamento-usuario">{resenha.titulo}</td>
+              <td className="table-gerenciamento-usuario">{resenha.corpo}</td>
               <td className="table-gerenciamento-usuario">
                 <Button color="danger" onClick={toggle} title="Excluir Usuário">
                   <FiUserX size="25"></FiUserX>
@@ -110,6 +91,7 @@ function Gerenciarresenha() {
               </td>
             </tr>
           </tbody>
+           ))}
         </Table>
       </div>
     </div>

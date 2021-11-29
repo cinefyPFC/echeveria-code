@@ -32,7 +32,6 @@ function Gerenciarusuario() {
     <div className="AdminTela">
       <HeaderAdmin></HeaderAdmin>
       <div className="AdminConteudo">
-
         <Table dark striped responsive>
           <thead>
             <tr>
