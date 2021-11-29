@@ -40,26 +40,36 @@ function Login() {
     history.push('/dash');
   };
 
-  if(isAdmin == false){ console.log('Teste')}
+
   async function loginAdmin() {
-    await api
-      .post('sessions', {
-        email: email,
-        senha: senha,
-        isAdmin: isAdmin,
-      })
-      .then(function (response) {
-        notificarSucessoLogin(response);
-        console.log(response);
-      })
-      .catch(function (error) {
-        notificarFalha(error);
-      });
+    if (email !== /^[^\s@]+@[^\s@]+$/) {
+      await api
+        .post('admin/sessions', {
+          apelido: email,
+          senha: senha,
+        }).then(function (response) {
+          notificarSucessoLogin(response);
+          console.log(response);
+        })
+        .catch(function (error) {
+          notificarFalha(error);
+        });
+    } else {
+      await api
+        .post('admin/sessions', {
+          email: email,
+          senha: senha,
+        }).then(function (response) {
+          notificarSucessoLogin(response);
+          console.log(response);
+        })
+        .catch(function (error) {
+          notificarFalha(error);
+        });
+    }
     setEmail('');
     setSenha('');
-    setIsAdmin('');
-
-}
+  }
   return (
     <div className="body">
       <ToastContainer />
