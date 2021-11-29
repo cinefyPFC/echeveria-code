@@ -8,35 +8,31 @@ import './gerenciamento.css';
 
 function Gerenciarusuario() {
   const [modal, setModal] = useState(false);
-  // Toggle for Modal
   const toggle = () => setModal(!modal);
+  const [usuarios, setUsuario] = useState([]);
+
 
   useEffect(() => {
     async function getUsers() {
       let token = sessionStorage.getItem('token');
-      await api
-        .get('users/', {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(function (response) {
-          console.log('Boa!', response.data);
-          // setUsuario(response.data);
-          // setAvatar(response.data.avatar.url);
-          // console.log('Usuario!', usuario);
-        })
-        .catch(function (error) {
-          console.log('Opa aconteceu esse erro aqui!', error);
-        });
+      const response = await api.get("users", {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      console.log(response.data);
+      setUsuario(response.data);
     }
     getUsers();
   }, []);
+
+
   return (
     <div className="AdminTela">
       <HeaderAdmin></HeaderAdmin>
       <div className="AdminConteudo">
+
         <Table dark striped responsive>
           <thead>
             <tr>
@@ -46,13 +42,13 @@ function Gerenciarusuario() {
               <th>Ações</th>
             </tr>
           </thead>
-          <tbody>
+          {usuarios.map((usuario) => (
+          <tbody key={usuario.id}>
             <tr>
-              <th scope="row">1</th>
-              <td className="table-gerenciamento-usuario">Guilherme</td>
-              <td className="table-gerenciamento-usuario">
-                guilherme@alunos.umc.br
-              </td>
+              <th scope="row" >{usuario.id}</th>
+              <td className="table-gerenciamento-usuario">{usuario.apelido}</td>
+              <td className="table-gerenciamento-usuario">{usuario.email}</td>
+
               <td className="table-gerenciamento-usuario">
                 <Button color="danger" onClick={toggle} title="Excluir Usuário">
                   <FiUserX size="25"></FiUserX>
@@ -74,7 +70,6 @@ function Gerenciarusuario() {
                           'Content-Type': 'application/json',
                           Authorization: `Bearer ${token}`,
                         },
-                        // data: { apelido: `${Usuario}` }
                       };
 
                       axios.request(options).then(function (response) {
@@ -98,7 +93,9 @@ function Gerenciarusuario() {
               </td>
             </tr>
           </tbody>
+          ))}
         </Table>
+
       </div>
     </div>
   );
