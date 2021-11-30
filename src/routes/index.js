@@ -1,11 +1,9 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Container from '../components/Container';
-//import Favoritos from '../components/Favoritos';
 import Favoritos from '../components/Favoritos/index.jsx';
 import gerenciarResenha from '../components/GerenciamentoReseha';
 import gerenciarUsuario from '../components/GerenciamentoUsuario';
-import Comentarios from '../components/resenha';
 import Cadastro from '../views/Cadastro';
 import Admin from '../views/Dashboard';
 import Dashboard from '../views/Dashboard/Profile';
@@ -31,7 +29,6 @@ function Routes() {
       <Suspense fallback={<span>Loading...</span>}>
         <Switch>
           <Route exact path="/" component={Index} />
-          <Route exact path="/resenha" component={Comentarios} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/recuperarsenha" component={recuperarSenha} />
           <Route exact path="/novasenha" component={novaSenha} />
