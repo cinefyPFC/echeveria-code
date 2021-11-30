@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FiUserX } from 'react-icons/fi';
-import { Button, Modal, ModalBody, Table } from 'reactstrap';
+import { Button, Table } from 'reactstrap';
 import HeaderAdmin from '../../components/HeaderAdmin';
 import api from '../../services/api';
 import './gerenciamento.css';
@@ -43,56 +43,41 @@ function Gerenciarusuario() {
             </tr>
           </thead>
           {usuarios.map((usuario) => (
-          <tbody key={usuario.id}>
-            <tr>
-              <th scope="row" >{usuario.id}</th>
-              <td className="table-gerenciamento-usuario">{usuario.apelido}</td>
-              <td className="table-gerenciamento-usuario">{usuario.email}</td>
+            <tbody key={usuario.id}>
+              <tr>
+                <th scope="row" >{usuario.id}</th>
+                <td className="table-gerenciamento-usuario" id={usuario.apelido}>{usuario.apelido}</td>
+                <td className="table-gerenciamento-usuario">{usuario.email}</td>
 
-              <td className="table-gerenciamento-usuario">
-                <Button color="danger" onClick={toggle} title="Excluir Usuário">
-                  <FiUserX size="25"></FiUserX>
-                </Button>
-                <Modal
-                  isOpen={modal}
-                  toggle={toggle}
-                  modalTransition={{ timeout: 500 }}
-                >
-                  <ModalBody>Deseja excluir o usuário?</ModalBody>
-                  <Button
-                    onClick={function noRefCheck() {
-                      let token = sessionStorage.getItem('token');
-                      const options = {
+                <td className="table-gerenciamento-usuario">
+                  <Button color="danger" onClick={function excluirUsuario() {
+                    console.log(usuario.apelido)
+                    let token = sessionStorage.getItem('token');
+                    const options = {
 
-                        method: 'DELETE',
-                        url: 'http://localhost:3333/admin/delete/user',
-                        headers: {
-                          'Content-Type': 'application/json',
-                          Authorization: `Bearer ${token}`,
-                        },
-                      };
+                      method: 'DELETE',
+                      url: 'http://localhost:3333/admin/delete/user',
+                      headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                      },
+                      data: {
+                        apelido: `${usuario.apelido}`
+                      }
+                    };
 
-                      axios.request(options).then(function (response) {
-                        console.log(response.data);
-                      }).catch(function (error) {
-                        console.error(error);
-                      });
-                    }}
-                  >
-                    Excluir
+                    axios.request(options).then(function (response) {
+                      console.log(response.data);
+                      window.location.reload(false)
+                    }).catch(function (error) {
+                      console.error(error);
+                    });
+                  }} title="Excluir Usuário">
+                    <FiUserX size="25"></FiUserX>
                   </Button>
-                  <Button
-                    color="primary"
-                    onClick={function noRefCheck() {
-                      console.log('cancelado');
-                    }}
-                  >
-                    Cancelar
-                  </Button>
-                </Modal>
-              </td>
-            </tr>
-          </tbody>
+                </td>
+              </tr>
+            </tbody>
           ))}
         </Table>
 
