@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 function AtualizarSenha() {
   const [input, setInput] = useState('');
+  let history = useHistory();
 
   useEffect(() => {
     async function token() {
@@ -17,8 +20,37 @@ function AtualizarSenha() {
     }
     token();
   }, []);
+
+  const notificarFalha = (error) => {
+    toast.error(`Erro na validação de dados`, {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  const notificarSucesso = (response) => {
+    toast.success(
+      `Senha mudad com sucesso!`,
+      {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      },
+    );
+  };
+
   function SenhaAtualizada() {
     const tokenzin = sessionStorage.getItem('pegaToken');
+    console.log(tokenzin)
     const options = {
       method: 'PUT',
       url: 'http://localhost:3333/users/newpass',
@@ -32,9 +64,12 @@ function AtualizarSenha() {
       .request(options)
       .then(function (response) {
         console.log(response.data);
+        notificarSucesso()
+        history.push('/login');
       })
       .catch(function (error) {
         console.error(error);
+        notificarFalha()
       });
   }
 
@@ -65,6 +100,7 @@ function AtualizarSenha() {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
