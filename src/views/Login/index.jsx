@@ -41,56 +41,62 @@ function Login() {
     sessionStorage.setItem('token', response.token);
     history.push('/perfil');
   };
-
-  return (
-    <div className="body">
-      <ToastContainer />
-      <div className="cadastro-box">
-        <h2>Login</h2>
-        <form>
-          <div className="user-box">
-            <input
-              type="text"
-              name="email"
-              pattern="/^[^\s@]+@[^\s@]+$/"
-              required=""
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <label>Usuário/E-mail</label>
-          </div>
-          <div className="user-box">
-            <input
-              type="password"
-              name="senha"
-              required=""
-              pattern="[^\0]"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-            />
-            <label>Senha</label>
-          </div>
-          <Link to="#" onClick={loginUsuario}>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Entrar
-          </Link>
-          <Link to="/cadastro" className="btnCadastrar">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Cadastrar
-          </Link>
-        </form>
-        <Link to="/recuperarsenha">Recuperar senha</Link>
-        <br />
-        <Link to="/admin">Administração?</Link>
+  if (sessionStorage.getItem('token') !== null) {
+    history.push('/perfil');
+    return (
+      <div>Você já está logado!</div>
+    )
+  } else {
+    return (
+      <div className="body">
+        <ToastContainer />
+        <div className="cadastro-box">
+          <h2>Login</h2>
+          <form>
+            <div className="user-box">
+              <input
+                type="text"
+                name="email"
+                pattern="/^[^\s@]+@[^\s@]+$/"
+                required=""
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <label>Usuário/E-mail</label>
+            </div>
+            <div className="user-box">
+              <input
+                type="password"
+                name="senha"
+                required=""
+                pattern="[^\0]"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+              />
+              <label>Senha</label>
+            </div>
+            <Link to="#" onClick={loginUsuario}>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Entrar
+            </Link>
+            <Link to="/cadastro" className="btnCadastrar">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Cadastrar
+            </Link>
+          </form>
+          <Link to="/recuperarsenha">Recuperar senha</Link>
+          <br />
+          <Link to="/admin">Administração?</Link>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 
   // function redirectiones() {
   //   console.log('asudaudshauhsduahds');

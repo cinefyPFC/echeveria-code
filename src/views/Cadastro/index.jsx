@@ -47,118 +47,125 @@ function Cadastro() {
       progress: undefined,
     });
   };
+  if (sessionStorage.getItem('token') !== null) {
+    history.push('/perfil');
+    console.log("retorno");
+    return (
+      <div>Você já está logado</div>
+    )
+  } else {
+    return (
+      <div className="body">
+        <div className="cadastro-box">
+          <h2>Cadastro</h2>
+          <form>
+            <div className="user-box">
+              <input
+                type="text"
+                name="apelido"
+                pattern="[^\0]"
+                required=""
+                value={apelido}
+                onChange={(e) => setApelido(e.target.value)}
+              />
 
-  return (
-    <div className="body">
-      <div className="cadastro-box">
-        <h2>Cadastro</h2>
-        <form>
-          <div className="user-box">
-            <input
-              type="text"
-              name="apelido"
-              pattern="[^\0]"
-              required=""
-              value={apelido}
-              onChange={(e) => setApelido(e.target.value)}
-            />
+              <label>Apelido</label>
+            </div>
+            <div className="user-box">
+              <input
+                type="text"
+                name="apelido"
+                pattern="[^\0]"
+                required=""
+                value={personagem}
+                onChange={(e) => setPersonagem(e.target.value)}
+              />
 
-            <label>Apelido</label>
-          </div>
-          <div className="user-box">
-            <input
-              type="text"
-              name="apelido"
-              pattern="[^\0]"
-              required=""
-              value={personagem}
-              onChange={(e) => setPersonagem(e.target.value)}
-            />
+              <label>Personagem Favorito</label>
+            </div>
+            <div className="user-box">
+              <input
+                type="text"
+                pattern="/^[^\s@]+@[^\s@]+$/"
+                name=""
+                required=""
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
 
-            <label>Personagem Favorito</label>
-          </div>
-          <div className="user-box">
-            <input
-              type="text"
-              pattern="/^[^\s@]+@[^\s@]+$/"
-              name=""
-              required=""
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+              <label>Email</label>
+            </div>
+            <div className="user-box">
+              <input
+                type="text"
+                pattern="/^[^\s@]+@[^\s@]+$/"
+                name=""
+                required=""
+                value={emailSecundario}
+                onChange={(e) => setEmailSecundario(e.target.value)}
+              />
+              <label>Email Secundário</label>
+            </div>
 
-            <label>Email</label>
-          </div>
-          <div className="user-box">
-            <input
-              type="text"
-              pattern="/^[^\s@]+@[^\s@]+$/"
-              name=""
-              required=""
-              value={emailSecundario}
-              onChange={(e) => setEmailSecundario(e.target.value)}
-            />
-            <label>Email Secundário</label>
-          </div>
+            <div className="user-box">
+              <input
+                type="text"
+                pattern="/^[^\s@]+@[^\s@]+$/"
+                name=""
+                required=""
+                value={genero}
+                onChange={(e) => setGenero(e.target.value)}
+              />
+              <label>Gênero Cinematográfico</label>
+            </div>
 
-          <div className="user-box">
-            <input
-              type="text"
-              pattern="/^[^\s@]+@[^\s@]+$/"
-              name=""
-              required=""
-              value={genero}
-              onChange={(e) => setGenero(e.target.value)}
-            />
-            <label>Gênero Cinematográfico</label>
-          </div>
+            <div className="user-box">
+              <input
+                type="password"
+                pattern="[^\0]"
+                name="password"
+                required=""
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+              />
 
-          <div className="user-box">
-            <input
-              type="password"
-              pattern="[^\0]"
-              name="password"
-              required=""
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-            />
+              <label>Senha</label>
+            </div>
 
-            <label>Senha</label>
-          </div>
+            <div className="user-box">
+              <input
+                type="Date"
+                name=""
+                placeholder="Data Nascimento"
+                date-format="MM DD YYYY"
+                maxLength="8"
+                required="Digite sua data de nascimento"
+                value={dtNascimento}
+                onChange={(e) => setDtnascimento(e.target.value)}
+              />
+            </div>
 
-          <div className="user-box">
-            <input
-              type="Date"
-              name=""
-              placeholder="Data Nascimento"
-              date-format="MM DD YYYY"
-              maxLength="8"
-              required="Digite sua data de nascimento"
-              value={dtNascimento}
-              onChange={(e) => setDtnascimento(e.target.value)}
-            />
-          </div>
+            <Link to="/login">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Entrar
+            </Link>
 
-          <Link to="/login">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Entrar
-          </Link>
-
-          <Link to="#" className="btnCadastrar" onClick={novoUsuario}>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Cadastrar
-          </Link>
-        </form>
+            <Link to="#" className="btnCadastrar" onClick={novoUsuario}>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Cadastrar
+            </Link>
+          </form>
+        </div>
+        <ToastContainer />
       </div>
-      <ToastContainer />
-    </div>
-  );
+    );
+  }
 
   async function novoUsuario() {
     await api
