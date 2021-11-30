@@ -107,7 +107,7 @@ function Profile() {
     history.push('/');
     console.log("retorno");
     return (
-      <div>não possui permissão</div>
+      <div>Faça o login por favor</div>
     )
   } else {
     return (
