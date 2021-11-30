@@ -7,8 +7,8 @@ import api from '../../services/api';
 import './gerenciamento.css';
 
 function Gerenciarusuario() {
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
+
+
   const [usuarios, setUsuario] = useState([]);
 
 
