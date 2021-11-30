@@ -26,7 +26,7 @@ function HeaderPerfil() {
             <li><Link to="/tv">Séries</Link></li>
             <li><Link to="/discovery">Descubra novos filmes</Link></li>
             <li><Link to="/perfil">Perfil</Link></li>
-            <li><Link to="/favoritos">Favoritos</Link></li>
+            <li><Link to="/lista">Lista</Link></li>
             <li className="Logout-Lista"><Link to="#" className="Logout" onClick={logout}>Sair</Link></li>
           </ul>
         </div>
