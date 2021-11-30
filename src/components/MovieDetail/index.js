@@ -24,8 +24,7 @@ function MovieDetail(props) {
   const [corpo, setCorpo] = useState('');
   const [nota, setNota] = useState('');
   const [veredito, setVeredito] = useState('');
-  const [resenha, setResenhas] = useState([]);
-  const [resenhaAntiga, setResenhasTeste] = useState([]);
+  const [resenha, setResenha] = useState([]);
   let history = useHistory();
 
   useEffect(() => {
@@ -44,14 +43,14 @@ function MovieDetail(props) {
       const response = axios
         .request(options)
         .then(function (response) {
-          setResenhasTeste(response.data);
+          setResenha(response.data);
           console.log(response.data);
         })
         .catch(function (error) {
           console.error(error);
         });
       console.log(response.data);
-      setResenhas(response.data);
+      setResenha(response.data);
     }
     getResenha();
     console.log(id); //mandar pro back
@@ -108,6 +107,26 @@ function MovieDetail(props) {
         </Link>
       );
     });
+  }
+
+  function renderResenha (resenha){
+    if(resenha == null){
+      return(
+        <h1>não possui comentários</h1>
+      )
+    }
+    else{
+      {resenha.map((resenha) => (
+        <div key={resenha.id}>
+          <h4 className="user-coments=name">{resenha.titulo}</h4>
+          <p className="user-coments">
+            {resenha.corpo}
+          </p>
+          <p>Nota: <span>{resenha.nota}</span></p>
+          <p>{resenha.veredito ? 'Gostei' : 'Não Gostei'}</p>
+        </div>
+      ))}
+    }
   }
 
   function renderGenres() {
@@ -186,6 +205,7 @@ function MovieDetail(props) {
     }
     return `$ ${money}`;
   }
+
 
   function salvaFilme() {
     const minhaLista = localStorage.getItem('filmes');
@@ -275,16 +295,7 @@ function MovieDetail(props) {
 
 
         <div className="movie-list-coments">
-          {resenhaAntiga.map((resenhaAntiga) => (
-            <div key={resenhaAntiga.id}>
-              <h4 className="user-coments=name">{resenhaAntiga.titulo}</h4>
-              <p className="user-coments">
-                {resenhaAntiga.corpo}
-              </p>
-              <p>Nota: <span>{resenhaAntiga.nota}</span></p>
-              <p>{resenhaAntiga.veredito ? 'Gostei' : 'Não Gostei'}</p>
-            </div>
-          ))}
+          {renderResenha()}
 
         </div>
         <div className="notaResenha">
