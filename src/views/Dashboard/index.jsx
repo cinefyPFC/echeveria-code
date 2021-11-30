@@ -10,7 +10,7 @@ function Login() {
   const [senha, setSenha] = useState('');
 
   const notificarFalha = (error) => {
-    toast.error(`${error.response.data.erro}`, {
+    toast.error(`Falha na validação dos dados`, {
       position: 'top-right',
       autoClose: 5000,
       hideProgressBar: false,
@@ -36,7 +36,7 @@ function Login() {
 
   const completarLogin = (response) => {
     sessionStorage.setItem('token', response.token);
-    history.push('/dash');
+    history.push('/gerenciarusuarios');
   };
 
 

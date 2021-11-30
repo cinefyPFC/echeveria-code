@@ -1,23 +1,19 @@
 import React from 'react';
+import { FiEdit, FiUser } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { Col } from 'reactstrap';
 import './header.css';
-import { FiHome, FiUser, FiEdit } from 'react-icons/fi';
 
 export default function HeaderAdmin() {
   return (
     <Col md={2} className="sidebar">
-      <Link to="/dashboard">
-        {<FiHome color="#FFF" size={24} /> }
-        Inicio
-      </Link>
       <Link to="/gerenciarusuarios">
-        { <FiUser color="#FFF" size={24} /> }
-        Usuário
+        {<FiUser color="#FFF" size={24} />}
+        Usuários
       </Link>
       <Link to="/gerenciarresenhas">
-        { <FiEdit color="#FFF" size={24} /> }
-        Configurações
+        {<FiEdit color="#FFF" size={24} />}
+        Resenhas
       </Link>
     </Col>
   );
