@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { Button, Col, Row } from 'reactstrap';
 import HeaderPerfil from '../../components/HeaderPerfil';
@@ -14,6 +16,7 @@ function Profile() {
   const [avatar, setAvatar] = useState([]);
   const [apelido, setApelido] = useState('');
   const [email, setEmail] = useState('');
+  const [emailSecundario, setEmailSecundario] = useState('');
   const [senha, setSenha] = useState('');
   const [dtNascimento, setDtnascimento] = useState('');
   const [genero, setGenero] = useState('');
@@ -25,10 +28,56 @@ function Profile() {
 
 
   function onClickExcluir() {
-    console.log('Usuário excluido');
+    let token = sessionStorage.getItem('token');
+
+    const options = {
+      method: 'DELETE',
+      url: 'http://localhost:3333/users',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    };
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+      sessionStorage.removeItem('token')
+      history.push('/')
+    }).catch(function (error) {
+      console.error(error);
+    });
   }
   function onClickSalvar() {
-    console.log('Alteração feita com sucesso');
+    let token = sessionStorage.getItem('token');
+    const options = {
+      method: 'PUT',
+      url: 'http://localhost:3333/users',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      data: {
+        email: email ? email : usuario.email,
+        emailSecundario: emailSecundario ? emailSecundario : usuario.emailSecundario,
+        apelido: apelido ? apelido : usuario.apelido,
+        senha: senha ? senha : usuario.senha,
+        dtNascimento: dtNascimento ? dtNascimento : usuario.dtNascimento,
+        genero: genero ? genero : usuario.genero
+      }
+    };
+
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+      window.location.reload(false)
+    }).catch(function (error) {
+      toast.error(`Erro, verifique email e senha`, {
+        position: 'top-right',
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    });
 
   }
 
@@ -77,7 +126,7 @@ function Profile() {
                       <div className="card-block text-center text-white">
                         <label htmlFor="uploadFile" className="control-label"><img
                           src={avatar}
-                          alt="Imagem usuario"
+                          alt="Clique aqui para inserir uma foto"
                           className="img-radius"
                         /></label>
 
@@ -111,6 +160,25 @@ function Profile() {
                                 required=""
                                 value={apelido}
                                 onChange={(e) => setApelido(e.target.value)}
+                              />
+                            </div>
+                          </Col>
+                          <Col sm={6}>
+                            <p className="info-user">Email Secundario</p>
+                            <div className="hiddeninfo" id="hiddeninfoemailsec">
+                              <p className="text-muted info-database">
+                                {usuario.emailSecundario}
+                              </p>
+                            </div>
+                            <div id="initialinputemailsec" className="inputhidden">
+                              <input
+                                className="editInputStyle"
+                                type="text"
+                                pattern="/^[^\s@]+@[^\s@]+$/"
+                                name=""
+                                required=""
+                                value={emailSecundario}
+                                onChange={(e) => setEmailSecundario(e.target.value)}
                               />
                             </div>
                           </Col>
@@ -176,7 +244,7 @@ function Profile() {
                                 type="password"
                                 pattern="[^\0]"
                                 name="password"
-                                required="Digite a senha"
+                                required
                                 value={senha}
                                 onChange={(e) => setSenha(e.target.value)}
                               />
@@ -262,6 +330,7 @@ function Profile() {
             </Row>
           </div>
         </div>
+        <ToastContainer />
       </div>
     );
   }
