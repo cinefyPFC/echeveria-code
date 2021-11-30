@@ -4,7 +4,6 @@ import { Link, useParams } from 'react-router-dom';
 import API from '../../services/tmdb';
 import Elenco from '../Elenco';
 import MovieImages from '../MovieImages';
-import Comentarios from '../resenha';
 import Section from '../Section';
 import './style.css';
 
@@ -260,7 +259,36 @@ function MovieDetail(props) {
         limit={5}
       />
       <Elenco cast={cast} />
-      <Comentarios />
+      {/* <Comentarios /> */}
+      <div className="notaResenha">
+        <input
+          className="editInputStyle"
+          type="text"
+          name="titulo"
+          pattern="[^\0]"
+          required=""
+          value={titulo}
+          onChange={(e) => setTitulo(e.target.value)}
+        />
+        <div className="movie-coments">
+          <textarea
+            className="text-area-movie-coments"
+            placeholder="Digite sua opinião sobre o filme"
+            value={corpo}
+            maxLength="550"
+            onChange={(e) => setCorpo(e.target.value)}
+          ></textarea>
+        </div>
+      </div>
+      <div className="movie-coments-button">
+        <button
+          className="button-coments"
+          onLoad={idfilme}
+          onClick={novaResenha}
+        >
+          Comentar
+        </button>
+      </div>
     </div>
   );
   async function novaResenha() {
@@ -277,7 +305,7 @@ function MovieDetail(props) {
         corpo: corpo,
         nota: nota,
         veredito: veredito,
-        tmdbId: movie.id.toString(),
+        tmdbId: id.toString(),
       }
     };
     await axios.request(options)

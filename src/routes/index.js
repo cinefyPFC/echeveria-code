@@ -1,19 +1,20 @@
-import React, {Suspense, lazy} from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Container from '../components/Container';
-import Perfil from '../views/Perfil';
-import Cadastro from '../views/Cadastro';
-import Erro from '../views/Error';
-import Index from '../views/Home';
-import Login from '../views/Login';
-import recuperarSenha from '../views/EsqueciSenha';
-import novaSenha from '../views/Novasenha';
-import Admin from '../views/Dashboard';
-import Dashboard from '../views/Dashboard/Profile';
-import gerenciarUsuario from '../components/GerenciamentoUsuario';
-import gerenciarResenha from '../components/GerenciamentoReseha';
 //import Favoritos from '../components/Favoritos';
 import Favoritos from '../components/Favoritos/index.jsx';
+import gerenciarResenha from '../components/GerenciamentoReseha';
+import gerenciarUsuario from '../components/GerenciamentoUsuario';
+import Comentarios from '../components/resenha';
+import Cadastro from '../views/Cadastro';
+import Admin from '../views/Dashboard';
+import Dashboard from '../views/Dashboard/Profile';
+import Erro from '../views/Error';
+import recuperarSenha from '../views/EsqueciSenha';
+import Index from '../views/Home';
+import Login from '../views/Login';
+import novaSenha from '../views/Novasenha';
+import Perfil from '../views/Perfil';
 
 const Home = lazy(() => import('../components/Home'));
 const HomeTv = lazy(() => import('../components/HomeTv'));
@@ -25,11 +26,12 @@ const Company = lazy(() => import('../components/Company'));
 
 function Routes() {
 
-	return(
-		<Router>
-			<Suspense fallback={<span>Loading...</span>}>
+  return (
+    <Router>
+      <Suspense fallback={<span>Loading...</span>}>
         <Switch>
           <Route exact path="/" component={Index} />
+          <Route exact path="/resenha" component={Comentarios} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/recuperarsenha" component={recuperarSenha} />
           <Route exact path="/novasenha" component={novaSenha} />
@@ -43,7 +45,7 @@ function Routes() {
           <Route exact path="/favoritos">
             <Container>
               <Favoritos />
-              </Container>
+            </Container>
           </Route>
 
           <Route exact path="/filmes">
@@ -82,10 +84,10 @@ function Routes() {
             </Container>
           </Route>
           <Route exact path="/*" component={Erro} />
-				</Switch>
-			</Suspense>
-		</Router>
-	)
+        </Switch>
+      </Suspense>
+    </Router>
+  )
 }
 
 export default Routes;
