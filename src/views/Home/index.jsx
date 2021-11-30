@@ -15,6 +15,7 @@ function Index() {
             <div className="row h-100 align-items-center">
               <div className="col-12 text-center">
                 <h1 className="fw-light">Cinefy</h1>
+                <br />
                 <p className="lead">Sua rede social de cinema!</p>
               </div>
             </div>
