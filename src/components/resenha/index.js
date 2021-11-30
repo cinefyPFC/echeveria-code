@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillDislike, AiFillLike, AiFillStar } from 'react-icons/ai';
 
 
 function Comentarios() {
@@ -40,7 +40,57 @@ function Comentarios() {
   }
   return (
     <>
-
+      <div className="movie-list-coments">
+        <div className="img-fluid img-coments">
+          <img
+            className="user-coments-img"
+            src=""
+            alt="Imagem Usuário"
+          />
+        </div>
+        <div className="movie-user-coments">
+          <h4 className="user-coments=name">Fanta Sabor original</h4>
+          <p className="user-coments">
+            Lorem Ipsum is simply dummy text of the printing and
+            typesetting industry. Lorem Ipsum has been the industry&aposs standard
+            dummy text ever since the 1500s, when an unknown printer took a
+            galley of type and scrambled it to make a type specimen book. It has
+            survived not only five centuries, but also the leap into electronic
+            typesetting, remaining essentially unchanged. It was popularised in
+            the 1960s with the release of Letraset sheets containing Lorem Ipsum
+            passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of Lorem Ipsum.
+          </p>
+          <div className="avaliacacaoResenha">
+            <div className="radio-image">
+              <label
+                htmlFor="gostei"
+                className="radio-custom-label gostei"
+                value="gostei"
+              >
+                <input
+                  id="gostei"
+                  name="radio-group"
+                  type="radio"
+                  value="true" //BOOLEAN
+                  onChange={(e) => setVeredito(e.target.value)}
+                />
+                <AiFillLike />
+              </label>
+              <label htmlFor="naogostei" className="radio-custom-label naogostei">
+                <input
+                  id="naogostei"
+                  name="radio-group"
+                  type="radio"
+                  value="false" //BOOLEAN
+                  onChange={(e) => setVeredito(e.target.value)}
+                />
+                <AiFillDislike />
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="notaResenha">
         <input
           className="editInputStyle"
