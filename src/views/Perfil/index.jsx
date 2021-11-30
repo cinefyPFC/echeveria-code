@@ -21,11 +21,8 @@ function Profile() {
   const [dtNascimento, setDtnascimento] = useState('');
   const [genero, setGenero] = useState('');
   let history = useHistory();
-
   const data = new FormData();
-
   const handleUploadFile = (e) => setAvatar(e.target.files[0]);
-
 
   function onClickExcluir() {
     let token = sessionStorage.getItem('token');
@@ -45,6 +42,7 @@ function Profile() {
       console.error(error);
     });
   }
+
   function onClickSalvar() {
     let token = sessionStorage.getItem('token');
     const options = {

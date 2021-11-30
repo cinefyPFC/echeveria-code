@@ -1,36 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-// const [senha, setSenha] = useState('');
-class atualizarSenha extends React.Component {
-  componentDidMount() {
-    let pegaToken = window.location.href;
-    pegaToken = pegaToken.replace('http://localhost:3000/novasenha?token=', '');
-    console.log(pegaToken);
+function AtualizarSenha() {
+  const [input, setInput] = useState('');
+
+  useEffect(() => {
+    async function token() {
+      let pegaToken = window.location.href;
+      pegaToken = pegaToken.replace(
+        'http://localhost:3000/novasenha?token=',
+        '',
+      );
+      console.log(pegaToken);
+      sessionStorage.setItem('pegaToken', pegaToken);
+    }
+    token();
+  }, []);
+  function SenhaAtualizada() {
+    const tokenzin = sessionStorage.getItem('pegaToken');
+    const options = {
+      method: 'PUT',
+      url: 'http://localhost:3333/users/newpass',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${tokenzin}`,
+      },
+      data: { senha: input },
+    };
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
   }
 
-  // novaSenha() {
-  //   console.log(pegaToken);
-  //   const options = {
-  //     method: 'PUT',
-  //     url: 'http://localhost:3333/users/newpass',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-
-  //       Authorization: `Bearer ${pegaToken}`,
-
-  //     },
-  //     data: { senha: senha }
-  //   };
-
-  //   axios.request(options).then(function (response) {
-  //     console.log(response.data);
-  //   }).catch(function (error) {
-  //     console.error(error);
-  //   });
-  // }
-  render() {
-    return (
+  return (
+    <div>
       <div className="body">
         <div className="cadastro-box">
           <h2>Nova Senha</h2>
@@ -41,11 +50,12 @@ class atualizarSenha extends React.Component {
                 name="senha"
                 pattern="/^[^\s@]+@[^\s@]+$/"
                 required=""
+                value={input}
+                onInput={(e) => setInput(e.target.value)}
               />
               <label>Digite sua nova senha </label>
             </div>
-
-            <Link to="#" onClick={""}>
+            <Link to="#" onClick={SenhaAtualizada}>
               <span></span>
               <span></span>
               <span></span>
@@ -55,10 +65,8 @@ class atualizarSenha extends React.Component {
           </form>
         </div>
       </div>
-    );
-  }
-
-
+    </div>
+  );
 }
 
-export default atualizarSenha;
+export default AtualizarSenha;

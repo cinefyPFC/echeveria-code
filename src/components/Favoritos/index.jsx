@@ -44,7 +44,7 @@ export default function Favoritos() {
                   />
                   <div className="divCenter">
                     <span className="listaFavoritosNome">
-                      {item.title ? item.title : item.name}{' '}
+                      {item.title ? !item.title : item.name}{' '}
                     </span>
                   </div>
                   <div className="divCenter">
