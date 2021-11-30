@@ -86,6 +86,8 @@ function Login() {
           </Link>
         </form>
         <Link to="/recuperarsenha">Recuperar senha</Link>
+        <br />
+        <Link to="/admin">Administração?</Link>
       </div>
     </div>
   );

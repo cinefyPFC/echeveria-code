@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import axios from "axios";
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+const [senha, setSenha] = useState('');
 class atualizarSenha extends React.Component {
   componentDidMount() {
     let pegaToken = window.location.href;
@@ -8,6 +10,26 @@ class atualizarSenha extends React.Component {
     console.log(pegaToken);
   }
 
+  novaSenha() {
+    console.log(pegaToken);
+    const options = {
+      method: 'PUT',
+      url: 'http://localhost:3333/users/newpass',
+      headers: {
+        'Content-Type': 'application/json',
+
+        Authorization: `Bearer ${pegaToken}`,
+
+      },
+      data: { senha: senha }
+    };
+
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+    }).catch(function (error) {
+      console.error(error);
+    });
+  }
   render() {
     return (
       <div className="body">
@@ -24,7 +46,7 @@ class atualizarSenha extends React.Component {
               <label>Digite sua nova senha </label>
             </div>
 
-            <Link to="#" onClick={atualizarSenha}>
+            <Link to="#" onClick={novaSenha}>
               <span></span>
               <span></span>
               <span></span>
@@ -36,6 +58,8 @@ class atualizarSenha extends React.Component {
       </div>
     );
   }
+
+
 }
 
 export default atualizarSenha;
