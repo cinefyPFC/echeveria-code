@@ -37,7 +37,7 @@ function Routes() {
           <Route exact path="/gerenciarusuarios" component={gerenciarUsuario} />
           <Route exact path="/gerenciarresenhas" component={gerenciarResenha} />
 
-          <Route exact path="/favoritos">
+          <Route exact path="/lista">
             <Container>
               <Favoritos />
             </Container>
