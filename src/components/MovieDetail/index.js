@@ -25,6 +25,7 @@ function MovieDetail(props) {
   const [nota, setNota] = useState('');
   const [veredito, setVeredito] = useState('');
   const [resenha, setResenhas] = useState([]);
+  const [resenhaAntiga, setResenhasTeste] = useState([]);
   let history = useHistory();
 
   useEffect(() => {
@@ -43,6 +44,7 @@ function MovieDetail(props) {
       const response = axios
         .request(options)
         .then(function (response) {
+          setResenhasTeste(response.data);
           console.log(response.data);
         })
         .catch(function (error) {
@@ -79,7 +81,6 @@ function MovieDetail(props) {
   }, [id, media]);
 
   function renderFirstActors() {
-    console.log('PQ Q EU TO TRIGANDO TODA HORA?');
     return cast.slice(0, 4).map((a) => {
       return (
         <Link key={a.id} to={`/person/${a.id}`}>
@@ -274,22 +275,39 @@ function MovieDetail(props) {
 
 
         <div className="movie-list-coments">
-          <div className="img-fluid img-coments">
-            <img className="user-coments-img" src="" alt="Imagem Usuário" />
+          {resenhaAntiga.map((resenhaAntiga) => (
+            <div key={resenhaAntiga.id}>
+              <h4 className="user-coments=name">{resenhaAntiga.titulo}</h4>
+              <p className="user-coments">
+                {resenhaAntiga.corpo}
+              </p>
+              <p>Nota: <span>{resenhaAntiga.nota}</span></p>
+              <p>{resenhaAntiga.veredito ? 'Gostei' : 'Não Gostei'}</p>
+            </div>
+          ))}
+
+        </div>
+        <div className="notaResenha">
+          <div className="tituloComentario"><input
+            className="titulo"
+            type="text"
+            placeholder="Digite o titulo da resenha"
+            name="titulo"
+            pattern="[^\0]"
+            required=""
+            value={titulo}
+            onChange={(e) => setTitulo(e.target.value)}
+          /></div>
+          <div className="movie-coments">
+            <textarea
+              className="text-area-movie-coments"
+              placeholder="Digite sua opinião sobre o filme"
+              value={corpo}
+              maxLength="550"
+              onChange={(e) => setCorpo(e.target.value)}
+            ></textarea>
           </div>
           <div className="movie-user-coments">
-            <h4 className="user-coments=name">Fanta Sabor original</h4>
-            <p className="user-coments">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&aposs standard dummy
-              text ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has survived
-              not only five centuries, but also the leap into electronic
-              typesetting, remaining essentially unchanged. It was popularised in
-              the 1960s with the release of Letraset sheets containing Lorem Ipsum
-              passages, and more recently with desktop publishing software like
-              Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
             <div className="avaliacacaoResenha">
               <div className="radio-image">
                 <label
@@ -321,26 +339,6 @@ function MovieDetail(props) {
                 </label>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="notaResenha">
-          <input
-            className="editInputStyle"
-            type="text"
-            name="titulo"
-            pattern="[^\0]"
-            required=""
-            value={titulo}
-            onChange={(e) => setTitulo(e.target.value)}
-          />
-          <div className="movie-coments">
-            <textarea
-              className="text-area-movie-coments"
-              placeholder="Digite sua opinião sobre o filme"
-              value={corpo}
-              maxLength="550"
-              onChange={(e) => setCorpo(e.target.value)}
-            ></textarea>
           </div>
           <div className="notaTitulo">
             <h4>Seleciona sua nota</h4>
@@ -406,12 +404,15 @@ function MovieDetail(props) {
           >
             Comentar
           </button>
+
         </div>
+
       </div>
     );
   }
   async function novaResenha() {
     let token = sessionStorage.getItem('token');
+    console.log(token)
     const options = {
       method: 'POST',
       url: 'http://localhost:3333/review',
@@ -431,6 +432,7 @@ function MovieDetail(props) {
       .request(options)
       .then(function (response) {
         console.log(response);
+        window.location.reload(false)
       })
       .catch(function (error) {
         console.log('Opa aconteceu esse erro aqui!', error);
